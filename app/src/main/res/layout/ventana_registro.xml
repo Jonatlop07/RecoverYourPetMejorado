@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VentanaRegistro"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#63B978"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="15dp"
+            android:text="@string/sign_up"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#2E2A2A"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txt_nombres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:ems="10"
+            android:hint="@string/registrarse_nombres"
+            android:inputType="textPersonName"
+            android:maxLength="30" />
+
+        <EditText
+            android:id="@+id/txt_apellidos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:ems="10"
+            android:hint="@string/registrarse_apellidos"
+            android:inputType="textPersonName"
+            android:maxLength="30" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/enunciado_genero"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinner_genero_usuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp" />
+
+        <EditText
+            android:id="@+id/txt_telefono"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:ems="10"
+            android:hint="@string/telefono"
+            android:inputType="phone"
+            android:maxLength="10" />
+
+        <EditText
+            android:id="@+id/txt_correo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:ems="10"
+            android:hint="@string/correo"
+            android:inputType="textEmailAddress"
+            android:maxLength="30" />
+
+        <EditText
+            android:id="@+id/txt_clave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:ems="10"
+            android:hint="@string/pass"
+            android:inputType="textPassword"
+            android:maxLength="14" />
+
+        <EditText
+            android:id="@+id/txt_confirmacion_clave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="30dp"
+            android:ems="10"
+            android:hint="@string/pass_confirm"
+            android:inputType="textPassword"
+            android:maxLength="14" />
+
+        <Button
+            android:id="@+id/boton_registrarse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginBottom="30dp"
+            android:background="#5BA2DB"
+            android:gravity="center"
+            android:onClick="Registrarse"
+            android:padding="10dp"
+            android:text="@string/registrarse"
+            android:textColor="#FFFFFF"
+            android:textColorHighlight="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</ScrollView>

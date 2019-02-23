@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="perfil_especieMascota_opciones">
+        <item>@string/opcion_vacio</item>
+        <item>@string/perfil_especie_perro</item>
+        <item>@string/perfil_especie_gato</item>
+    </string-array>
+
+    <string-array name="perfil_generoMascota_opciones">
+        <item>@string/opcion_vacio</item>
+        <item>@string/perfil_genero_macho</item>
+        <item>@string/perfil_genero_hembra</item>
+    </string-array>
+
+    <string-array name="perfil_razaMascota_opciones">
+        <item>@string/opcion_vacio</item>
+        <item>@string/perfil_raza_beagle</item>
+        <item>@string/perfil_raza_pastorAleman</item>
+        <item>@string/perfil_raza_sabueso</item>
+        <item>@string/perfil_raza_schnauzer</item>
+    </string-array>
+
+    <string-array name="perfil_tamañoMascota_opciones">
+        <item>@string/opcion_vacio</item>
+        <item>@string/perfil_tamaño_muyPequeño</item>
+        <item>@string/perfil_tamaño_pequeño</item>
+        <item>@string/perfil_tamaño_mediano</item>
+        <item>@string/perfil_tamaño_grande</item>
+    </string-array>
+
+    <string-array name="perfil_edadMascota_opciones">
+        <item>@string/opcion_vacio</item>
+        <item>@string/perfil_edad_opcion1</item>
+        <item>@string/perfil_edad_opcion2</item>
+        <item>@string/perfil_edad_opcion3</item>
+        <item>@string/perfil_edad_opcion4</item>
+        <item>@string/perfil_edad_opcion5</item>
+    </string-array>
+</resources>

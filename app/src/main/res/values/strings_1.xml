@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="opcion_vacio"></string>
+
+    <string name="perfil_especie_perro">Perro</string>
+    <string name="perfil_especie_gato">Gato</string>
+
+
+    <string name="perfil_genero_macho">Macho</string>
+    <string name="perfil_genero_hembra">Hembra</string>
+
+
+    <string name="perfil_raza_beagle">Beagle</string>
+    <string name="perfil_raza_pastorAleman">Pastor Alemán</string>
+    <string name="perfil_raza_sabueso">Sabueso</string>
+    <string name="perfil_raza_schnauzer">Schnauzer</string>
+
+
+    <string name="perfil_tamaño_muyPequeño">Muy pequeño</string>
+    <string name="perfil_tamaño_pequeño">Pequeño</string>
+    <string name="perfil_tamaño_mediano">Mediano</string>
+    <string name="perfil_tamaño_grande">Grande</string>
+
+
+    <string name="perfil_edad_opcion1">Entre 0 y 1 años</string>
+    <string name="perfil_edad_opcion2">Entre 1 y 3 años</string>
+    <string name="perfil_edad_opcion3">Entre 3 y 5 años</string>
+    <string name="perfil_edad_opcion4">Entre 5 y 7 años</string>
+    <string name="perfil_edad_opcion5">Más de 7 años</string>
+</resources>

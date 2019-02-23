@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">RecoverYourPet</string>
+    <string name="descripcion_img">"Logo Principal"</string>
+    <string name="botonComenzar">"Comenzar"</string>
+    <string name="Bienvenida">"Te damos la bienvenida a nuestra app"</string>
+    <string name="Informacion1">"\n¿Qué es RecoverYourPet?\n"</string>
+    <string name="Informacion2">"Es una iniciativa que nació por la necesidad de establecer un espacio dedicado a la búsqueda de mascotas extraviadas.\nMediante esta aplicación facilitamos a las personas que tengan mascotas extraviadas, la difusión de la información de estas mediante la creación de perfiles que contengan tanto datos fundamentales como detalles pequeños."</string>
+    <string name="Informacion3">"Esto ayuda a que quienes encuentren un perro o gato que sea una potencial mascota extraviada puedan hallar a su dueño mediante la especificación de los datos fundamentales.\n"</string>
+    <string name="descripcion_perrito">"Perrito perdido"</string>
+    <string name="botonSiguiente">"Siguiente"</string>
+    <string name="inicia_sesion">"¿Tienes una cuenta? Inicia sesión"</string>
+    <string name="boton_ingresar">"Ingresar"</string>
+    <string name="registrarse">"Registrarse"</string>
+    <string name="registrarse_nombres">"Nombres"</string>
+    <string name="registrarse_apellidos">"Apellidos"</string>
+    <string name="telefono">"Número telefónico"</string>
+    <string name="enunciado_genero">Género</string>
+
+    <string name="correo">"Dirección de E-mail"</string>
+    <string name="pass">"Contraseña"</string>
+    <string name="pass_confirm">"Confirmar contraseña"</string>
+
+    <string name="sign_up">"Ingresa tus datos principales"</string>
+    <string name="registrarse_genero">Género:</string>
+
+
+    <string name="tituloPerfil">"Crea el perfil de tu mascota"</string>
+
+    <string name="perfil_nombreMascota">"Nombre de la mascota"</string>
+    <string name="perfil_insertarFoto">"Insertar foto"</string>
+    <string name="perfil_caracteristicasEspecificas">"Características específicas"</string>
+
+    <string name="enunciado_especieMascota">"Especie:"</string>
+    <string name="enunciado_generoMascota">"Género:"</string>
+    <string name="enunciado_razaPerro">"Raza(perro):"</string>
+    <string name="enunciado_razaGato">"Raza(gato):"</string>
+    <string name="enunciado_tamañoMascota">"Tamaño:"</string>
+    <string name="enunciado_edadMascota">"Edad:"</string>
+
+    <string name="registroPerfil">"Registrar perfil"</string>
+
+    <string name="tituloBuscarPerfil">"Búsqueda de perfiles"</string>
+    <string name="realizarBusqueda">"Realizar búsqueda"</string>
+
+    <string name="mi_cuenta">"Mi cuenta"</string>
+    <string name="crear_p">"Crear perfil"</string>
+    <string name="buscar_p">"Buscar perfil"</string>
+    <string name="cerrar_sesion">"Cerrar sesión"</string>
+    <string name="salir_app">"Salir de la app"</string>
+
+    <string name="contexto" >"Si has encontrado a una mascota puedes buscarla por medio de los siguientes parámetros:\n\n- Especie\n- Género\n- Raza\n- Tamaño\n- Edad"</string>
+
+
+</resources>
