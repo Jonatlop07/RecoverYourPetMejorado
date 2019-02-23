@@ -101,10 +101,17 @@ public class VentanaCrearPerfil extends AppCompatActivity {
             raza_m = raza_gato.getSelectedItem().toString();
         }
 
-        helper.abrirBD();
-        helper.insertarPerfil(nombre_m, especie_m, genero_m, raza_m, tam_m, edad_m, caract_esp_m);
-        helper.cerrarBD();
+        if (nombre_m.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Por favor, ingresa el nombre de la mascota",
+                    Toast.LENGTH_SHORT).show();
+        } else {
+            nombre_mascota.setText("");
+            caract_esp.setText("");
+            helper.abrirBD();
+            helper.insertarPerfil(nombre_m, especie_m, genero_m, raza_m, tam_m, edad_m, caract_esp_m);
+            helper.cerrarBD();
 
-        Toast.makeText(getApplicationContext(), "Perfil completado y guardado con éxito.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Perfil completado y guardado con éxito.", Toast.LENGTH_LONG).show();
+        }
     }
 }

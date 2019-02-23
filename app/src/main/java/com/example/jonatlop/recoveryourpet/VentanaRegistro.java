@@ -52,9 +52,9 @@ public class VentanaRegistro extends AppCompatActivity {
         String clave_u = clave_usuario.getText().toString();
         String confirmar_clave_u = confirmar_clave_usuario.getText().toString();
 
-        if (nombres_u.equals("") || apellidos_u.equals("") ||
-            telefono_u.equals("") || correo_u.equals("") ||
-            clave_u.equals("") ) {
+        if (nombres_u.isEmpty() || apellidos_u.isEmpty() ||
+            telefono_u.isEmpty() || correo_u.isEmpty() ||
+            clave_u.isEmpty() ) {
 
             Toast.makeText(getApplicationContext(), "Por favor, ingresa los datos solicitados en su totalidad.",
                     Toast.LENGTH_SHORT).show();
@@ -65,6 +65,13 @@ public class VentanaRegistro extends AppCompatActivity {
             helper.abrir();
             helper.insertarRegistro(nombres_u, apellidos_u, genero_u, telefono_u, correo_u, clave_u);
             helper.cerrar();
+
+            nombres_usuario.setText("");
+            apellidos_usuario.setText("");
+            telefono_usuario.setText("");
+            correo_usuario.setText("");
+            clave_usuario.setText("");
+            confirmar_clave_usuario.setText("");
 
             Toast.makeText(getApplicationContext(), "Registro completado con éxito.", Toast.LENGTH_LONG).show();
 
