@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -35,15 +36,21 @@ public class VentanaListaPerfiles extends AppCompatActivity {
                                                     conjunto_datos[2], conjunto_datos[3], conjunto_datos[4]);
 
         ArrayList<String> lista_resultados = new ArrayList<>();
-        if (cursor.moveToFirst()) {
-            do {
-                lista_resultados.add("NOMBRE: " + cursor.getString(cursor.getColumnIndex("nombre")) +
-                        "\nRAZA: " + cursor.getString(cursor.getColumnIndex("raza")) +
-                        "\nTAMAÑO: " + cursor.getString(cursor.getColumnIndex("tamanio")) +
-                        "\nEDAD: " + cursor.getString(cursor.getColumnIndex("edad")));
+        if (cursor.getCount() > 0) {
+            if (cursor.moveToFirst()) {
+                do {
+                    lista_resultados.add("NOMBRE: " + cursor.getString(cursor.getColumnIndex("nombre")) +
+                            "\nRAZA: " + cursor.getString(cursor.getColumnIndex("raza")) +
+                            "\nTAMAÑO: " + cursor.getString(cursor.getColumnIndex("tamanio")) +
+                            "\nEDAD: " + cursor.getString(cursor.getColumnIndex("edad")));
 
-            } while(cursor.moveToNext());
+                } while(cursor.moveToNext());
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "No se encontraron resultados para su búsqueda",
+                    Toast.LENGTH_LONG).show();
         }
+
 
         adaptador = new ArrayAdapter(this, android.R.layout.simple_list_item_1,lista_resultados);
         lv.setAdapter(adaptador);
