@@ -1,8 +1,10 @@
 package com.example.jonatlop.recoveryourpet;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -92,5 +94,28 @@ public class VentanaListaPerfiles extends AppCompatActivity {
             System.exit(0);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setMessage("¿Deseas realizar la búsqueda de nuevo?");
+        builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent regresar_busqueda = new Intent(VentanaListaPerfiles.this, VentanaBuscarPerfil.class);
+                startActivity(regresar_busqueda);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

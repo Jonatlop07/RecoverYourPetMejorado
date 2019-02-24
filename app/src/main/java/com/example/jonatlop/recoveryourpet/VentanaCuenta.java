@@ -1,11 +1,12 @@
 package com.example.jonatlop.recoveryourpet;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 public class VentanaCuenta extends AppCompatActivity {
 
@@ -45,5 +46,29 @@ public class VentanaCuenta extends AppCompatActivity {
             System.exit(0);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setMessage("Estás a punto de cerrar sesión ¿Deseas continuar?");
+        builder.setTitle("Mensaje de confirmación");
+        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent regresar_ingreso = new Intent(VentanaCuenta.this, VentanaIngreso.class);
+                startActivity(regresar_ingreso);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

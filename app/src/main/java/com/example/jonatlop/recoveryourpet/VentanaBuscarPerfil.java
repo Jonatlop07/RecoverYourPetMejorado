@@ -1,10 +1,12 @@
 package com.example.jonatlop.recoveryourpet;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -127,5 +129,29 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
         Intent realizar_busqueda = new Intent (getApplicationContext(), VentanaListaPerfiles.class);
         realizar_busqueda.putExtra("parametros_busqueda",parametros_busqueda);
         startActivity(realizar_busqueda);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder= new AlertDialog.Builder(this);
+        builder.setMessage("Estás a punto de cerrar sesión ¿Deseas continuar?");
+        builder.setTitle("Mensaje de confirmación");
+        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Intent regresar_ingreso = new Intent(VentanaBuscarPerfil.this, VentanaIngreso.class);
+                startActivity(regresar_ingreso);
+                finish();
+            }
+        });
+        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
