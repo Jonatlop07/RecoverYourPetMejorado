@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -57,13 +59,38 @@ public class VentanaListaPerfiles extends AppCompatActivity {
 
     }
 
-    public void CreaPerfil(View view) {
-        Intent boton_creaPerfil = new Intent(this, VentanaCrearPerfil.class);
-        startActivity(boton_creaPerfil);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.overflow, menu);
+        return true;
     }
 
-    public void BuscaPerfil(View view) {
-        Intent boton_buscaPerfil = new Intent(this, VentanaBuscarPerfil.class);
-        startActivity(boton_buscaPerfil);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.item_micuenta) {
+            Intent verCuenta = new Intent(VentanaListaPerfiles.this, VentanaCuenta.class);
+            startActivity(verCuenta);
+            finish();
+            return true;
+        } else if (id == R.id.item_crear) {
+            Intent creaPerfil = new Intent(VentanaListaPerfiles.this, VentanaCrearPerfil.class);
+            startActivity(creaPerfil);
+            finish();
+            return true;
+        } else if (id == R.id.item_buscar) {
+            Intent buscaPerfil = new Intent(VentanaListaPerfiles.this, VentanaBuscarPerfil.class);
+            startActivity(buscaPerfil);
+            finish();
+            return true;
+        } else if (id == R.id.item_cerrar) {
+            Intent cierraSesion = new Intent(VentanaListaPerfiles.this, VentanaIngreso.class);
+            startActivity(cierraSesion);
+            finish();
+            return true;
+        } else if (id == R.id.item_salir) {
+            finish();
+            System.exit(0);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
