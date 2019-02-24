@@ -14,7 +14,8 @@
         <activity android:name=".VentanaBuscarPerfil" />
         <activity android:name=".VentanaCrearPerfil" />
         <activity android:name=".VentanaCuenta" />
-        <activity android:name=".VentanaRegistro" />
+        <activity android:name=".VentanaRegistro"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".VentanaIngreso"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".VentanaInformacion"
