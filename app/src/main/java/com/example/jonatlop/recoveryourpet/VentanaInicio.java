@@ -30,6 +30,7 @@ public class VentanaInicio extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+                System.exit(0);
             }
         });
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

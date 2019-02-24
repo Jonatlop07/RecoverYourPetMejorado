@@ -19,6 +19,7 @@ public class VentanaInformacion extends AppCompatActivity {
         Intent siguiente = new Intent(this, VentanaIngreso.class);
         startActivity(siguiente);
         finish();
+        System.exit(0);
     }
 
     @Override
