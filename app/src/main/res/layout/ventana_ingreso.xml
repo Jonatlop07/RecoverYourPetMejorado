@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#63B978"
+        android:background="#FF9800"
         android:gravity="center"
         android:padding="15dp"
         android:text="@string/inicia_sesion"
@@ -49,7 +49,7 @@
         android:layout_marginLeft="120dp"
         android:layout_marginTop="30dp"
         android:layout_marginRight="120dp"
-        android:background="#5BA2DB"
+        android:background="@drawable/rounded_blue"
         android:onClick="IniciarSesion"
         android:padding="10dp"
         android:text="@string/boton_ingresar"

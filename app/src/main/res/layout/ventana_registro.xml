@@ -14,7 +14,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#63B978"
+            android:background="#FF9800"
             android:gravity="center"
             android:paddingLeft="10dp"
             android:paddingTop="15dp"
@@ -123,7 +123,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginRight="100dp"
             android:layout_marginBottom="30dp"
-            android:background="#5BA2DB"
+            android:background="@drawable/rounded_blue"
             android:gravity="center"
             android:onClick="Registrarse"
             android:padding="10dp"

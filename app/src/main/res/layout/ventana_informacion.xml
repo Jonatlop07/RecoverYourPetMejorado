@@ -15,7 +15,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#63B978"
+            android:background="#FF9800"
             android:gravity="center"
             android:padding="15dp"
             android:text="@string/Bienvenida"
@@ -68,7 +68,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="110dp"
             android:layout_marginBottom="20dp"
-            android:background="#5BA2DB"
+            android:background="@drawable/rounded_blue"
             android:gravity="center"
             android:onClick="Siguiente"
             android:padding="10dp"

@@ -6,6 +6,18 @@
     tools:context=".VentanaBuscarPerfil"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FF9800"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="@string/lista_perfiles"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:typeface="serif" />
+
     <ListView
         android:id="@+id/lista"
         android:layout_width="match_parent"
