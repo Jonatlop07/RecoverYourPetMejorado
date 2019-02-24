@@ -3,22 +3,22 @@
 
     <item
         android:id="@+id/item_micuenta"
-        android:icon="@android:drawable/ic_dialog_info"
-        android:title="@string/mi_cuenta" />
+        android:title="@string/mi_cuenta"
+        android:icon="@android:drawable/ic_dialog_info"/>
     <item
         android:id="@+id/item_crear"
-        android:icon="@android:drawable/ic_input_add"
-        android:title="@string/crear_p" />
+        android:title="@string/crear_p"
+        android:icon="@android:drawable/ic_input_add"/>
     <item
         android:id="@+id/item_buscar"
-        android:icon="@android:drawable/ic_menu_search"
-        android:title="@string/buscar_p" />
+        android:title="@string/buscar_p"
+        android:icon="@android:drawable/ic_menu_search"/>
     <item
         android:id="@+id/item_cerrar"
-        android:icon="@android:drawable/presence_offline"
-        android:title="@string/cerrar_sesion" />
+        android:title="@string/cerrar_sesion"
+        android:icon="@android:drawable/presence_offline"/>
     <item
         android:id="@+id/item_salir"
-        android:icon="@android:drawable/ic_lock_power_off"
-        android:title="@string/salir_app" />
+        android:title="@string/salir_app"
+        android:icon="@android:drawable/ic_lock_power_off"/>
 </menu>
