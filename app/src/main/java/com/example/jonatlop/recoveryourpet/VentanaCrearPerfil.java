@@ -90,6 +90,9 @@ public class VentanaCrearPerfil extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.item_micuenta) {
+            Intent verCuenta = new Intent(VentanaCrearPerfil.this, VentanaCuenta.class);
+            startActivity(verCuenta);
+            finish();
             return true;
         } else if (id == R.id.item_crear) {
             nombre_mascota.setText("");
