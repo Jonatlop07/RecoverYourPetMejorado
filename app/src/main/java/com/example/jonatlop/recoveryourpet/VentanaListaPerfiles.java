@@ -18,7 +18,7 @@ import OpenHelper.AlmacenPerfilesMascotas;
 public class VentanaListaPerfiles extends AppCompatActivity {
 
     private AlmacenPerfilesMascotas helper = new AlmacenPerfilesMascotas(this, "BD_Mascotas", null, 1);
-    //private TextView itemNombre, itemEspecie, itemGenero, itemRaza;
+
     String conjunto_datos[] = new String[5];
     private ListView lv;
     ArrayList<String> lista_resultados;

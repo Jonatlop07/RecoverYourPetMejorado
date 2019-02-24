@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_micuenta"
+        android:icon="@android:drawable/ic_dialog_info"
+        android:title="@string/mi_cuenta" />
+    <item
+        android:id="@+id/item_crear"
+        android:icon="@android:drawable/ic_input_add"
+        android:title="@string/crear_p" />
+    <item
+        android:id="@+id/item_buscar"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="@string/buscar_p" />
+    <item
+        android:id="@+id/item_cerrar"
+        android:icon="@android:drawable/presence_offline"
+        android:title="@string/cerrar_sesion" />
+    <item
+        android:id="@+id/item_salir"
+        android:icon="@android:drawable/ic_lock_power_off"
+        android:title="@string/salir_app" />
+</menu>

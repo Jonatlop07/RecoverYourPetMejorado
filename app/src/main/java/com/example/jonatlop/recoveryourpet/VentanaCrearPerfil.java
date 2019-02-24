@@ -3,6 +3,8 @@ package com.example.jonatlop.recoveryourpet;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -77,14 +79,35 @@ public class VentanaCrearPerfil extends AppCompatActivity {
         raza_gato.setAdapter(ad_raza_gato);
     }
 
-    public void CreaPerfil(View view) {
-        Intent boton_creaPerfil = new Intent(this, VentanaCrearPerfil.class);
-        startActivity(boton_creaPerfil);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.overflow, menu);
+        return true;
     }
 
-    public void BuscaPerfil(View view) {
-        Intent boton_buscaPerfil = new Intent(this, VentanaBuscarPerfil.class);
-        startActivity(boton_buscaPerfil);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.item_micuenta) {
+            return true;
+        } else if (id == R.id.item_crear) {
+            nombre_mascota.setText("");
+            caract_esp.setText("");
+            return true;
+        } else if (id == R.id.item_buscar) {
+            Intent buscaPerfil = new Intent(VentanaCrearPerfil.this, VentanaBuscarPerfil.class);
+            startActivity(buscaPerfil);
+            finish();
+            return true;
+        } else if (id == R.id.item_cerrar) {
+            Intent cierraSesion = new Intent(VentanaCrearPerfil.this, VentanaIngreso.class);
+            startActivity(cierraSesion);
+            finish();
+            return true;
+        } else if (id == R.id.item_salir) {
+            finish();
+            System.exit(0);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void RegistrarPerfil (View view) {

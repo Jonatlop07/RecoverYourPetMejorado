@@ -15,16 +15,35 @@ public class VentanaCuenta extends AppCompatActivity {
         setContentView(R.layout.ventana_cuenta);
     }
 
-
-    public void CreaPerfil(View view) {
-        Intent boton_creaPerfil = new Intent(this, VentanaCrearPerfil.class);
-        startActivity(boton_creaPerfil);
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.overflow, menu);
+        return true;
     }
 
-    public void BuscaPerfil(View view) {
-        Intent boton_buscaPerfil = new Intent(this, VentanaBuscarPerfil.class);
-        startActivity(boton_buscaPerfil);
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.item_micuenta) {
+            return true;
+        } else if (id == R.id.item_crear) {
+            Intent creaPerfil = new Intent(VentanaCuenta.this, VentanaCrearPerfil.class);
+            startActivity(creaPerfil);
+            finish();
+            return true;
+        } else if (id == R.id.item_buscar) {
+            Intent buscaPerfil = new Intent(VentanaCuenta.this, VentanaBuscarPerfil.class);
+            startActivity(buscaPerfil);
+            finish();
+            return true;
+        } else if (id == R.id.item_cerrar) {
+            Intent cierraSesion = new Intent(VentanaCuenta.this, VentanaIngreso.class);
+            startActivity(cierraSesion);
+            finish();
+            return true;
+        } else if (id == R.id.item_salir) {
+            finish();
+            System.exit(0);
+        }
+        return super.onOptionsItemSelected(item);
     }
-
-
 }
