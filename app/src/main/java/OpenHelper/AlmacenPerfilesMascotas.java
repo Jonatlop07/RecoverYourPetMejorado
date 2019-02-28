@@ -53,7 +53,7 @@ public class AlmacenPerfilesMascotas extends SQLiteOpenHelper {
 
         Cursor mcursor = null;
 
-        String[] campos = new String[] {"nombre", "raza", "tamanio", "edad"};
+        String[] campos = new String[] {"nombre", "especie", "generoM", "raza", "tamanio", "edad", "caractEspeciales"};
 
         if (tamanio_m.equals("No responde") && ed_m.equals("No responde") && raza_mascota.equals("No aplica")) {
 

@@ -126,7 +126,7 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
 
         String [] parametros_busqueda = {especie_m, genero_m, raza_m, tam_m, edad_m};
 
-        Intent realizar_busqueda = new Intent (getApplicationContext(), VentanaListaPerfiles.class);
+        Intent realizar_busqueda = new Intent (VentanaBuscarPerfil.this, VentanaListaPerfiles.class);
         realizar_busqueda.putExtra("parametros_busqueda",parametros_busqueda);
         startActivity(realizar_busqueda);
     }

@@ -19,7 +19,6 @@ public class VentanaInformacion extends AppCompatActivity {
         Intent siguiente = new Intent(this, VentanaIngreso.class);
         startActivity(siguiente);
         finish();
-        System.exit(0);
     }
 
     @Override
@@ -31,6 +30,7 @@ public class VentanaInformacion extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
+                System.exit(0);
             }
         });
         builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
