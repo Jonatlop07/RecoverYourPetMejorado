@@ -1,6 +1,8 @@
 package com.example.jonatlop.recoveryourpet;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 
 public class Adaptador extends BaseAdapter {
@@ -37,19 +40,24 @@ public class Adaptador extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final PerfilMascota perfil = (PerfilMascota) getItem(position);
+        Bitmap bitmap = null;
 
         convertView = LayoutInflater.from(context).inflate(R.layout.item, null);
-        //ImageView imgFoto = (ImageView) convertView.findViewById(R.id.);
+        ImageView imgFoto = (ImageView) convertView.findViewById(R.id.imgFoto);
         TextView perfNombre = (TextView) convertView.findViewById(R.id.nombre_mascota);
         TextView perfRaza = (TextView) convertView.findViewById(R.id.raza_mascota);
         TextView perfTamanio = (TextView) convertView.findViewById(R.id.tam_mascota);
         TextView perfEdad = (TextView) convertView.findViewById(R.id.edad_mascota);
 
-        //imgFoto.setImageResource(Item.getFoto());
+
         perfNombre.setText(perfil.getNombre());
         perfRaza.setText(perfil.getRaza());
         perfTamanio.setText(perfil.getTamanio());
         perfEdad.setText(perfil.getEdad());
+
+        ByteArrayInputStream bais = new ByteArrayInputStream(perfil.getFoto());
+        bitmap = BitmapFactory.decodeStream(bais);
+        imgFoto.setImageBitmap(bitmap);
 
         return convertView;
     }

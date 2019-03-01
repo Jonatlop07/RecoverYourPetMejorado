@@ -54,6 +54,7 @@ public class VentanaListaPerfiles extends AppCompatActivity {
                             cursor.getString(cursor.getColumnIndex("raza")),
                             cursor.getString(cursor.getColumnIndex("tamanio")),
                             cursor.getString(cursor.getColumnIndex("edad")),
+                            cursor.getBlob(cursor.getColumnIndex("foto")),
                             cursor.getString(cursor.getColumnIndex("caractEspeciales")));
 
                     lista_resultados.add(perfil_mascota);

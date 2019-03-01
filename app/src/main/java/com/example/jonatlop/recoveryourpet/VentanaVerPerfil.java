@@ -2,17 +2,21 @@ package com.example.jonatlop.recoveryourpet;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.ByteArrayInputStream;
+
 public class VentanaVerPerfil extends AppCompatActivity {
 
     private PerfilMascota perfil;
     private TextView nombre, especie, genero, raza, tamanio, edad, c_especiales;
-    private ImageView foto;
+    private ImageView imgFoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +32,7 @@ public class VentanaVerPerfil extends AppCompatActivity {
         tamanio =  (TextView) findViewById(R.id.t_m);
         edad =  (TextView) findViewById(R.id.ed_m);
         c_especiales =  (TextView) findViewById(R.id.c_m);
-        foto = (ImageView) findViewById(R.id.f_m);
+        imgFoto = (ImageView) findViewById(R.id.f_m);
 
         nombre.setText(perfil.getNombre());
         especie.setText(perfil.getEspecie());
@@ -37,6 +41,12 @@ public class VentanaVerPerfil extends AppCompatActivity {
         tamanio.setText("Tamaño: " + perfil.getTamanio());
         edad.setText("Edad: " + perfil.getEdad());
         c_especiales.setText(perfil.getCaract_esp());
+
+        Bitmap bitmap = null;
+        ByteArrayInputStream bais = new ByteArrayInputStream(perfil.getFoto());
+        bitmap = BitmapFactory.decodeStream(bais);
+        imgFoto.setImageBitmap(bitmap);
+
 
     }
 

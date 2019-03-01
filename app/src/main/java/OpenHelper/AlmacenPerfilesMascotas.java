@@ -35,7 +35,7 @@ public class AlmacenPerfilesMascotas extends SQLiteOpenHelper {
 
     public void insertarPerfil(String nomb_m, String esp_m, String gen_m,
                                String raza_mascota, String tamanio_m, String ed_m,
-                               String c_esp) {
+                               String c_esp, byte[] foto_m) {
 
         ContentValues datos = new ContentValues();
         datos.put("nombre", nomb_m);
@@ -44,6 +44,7 @@ public class AlmacenPerfilesMascotas extends SQLiteOpenHelper {
         datos.put("raza", raza_mascota);
         datos.put("tamanio", tamanio_m);
         datos.put("edad", ed_m);
+        datos.put("foto", foto_m);
         datos.put("caractEspeciales", c_esp);
         this.getWritableDatabase().insert("perfiles_mascotas", null, datos);
     }
@@ -53,7 +54,7 @@ public class AlmacenPerfilesMascotas extends SQLiteOpenHelper {
 
         Cursor mcursor = null;
 
-        String[] campos = new String[] {"nombre", "especie", "generoM", "raza", "tamanio", "edad", "caractEspeciales"};
+        String[] campos = new String[] {"nombre", "especie", "generoM", "raza", "tamanio", "edad", "foto", "caractEspeciales"};
 
         if (tamanio_m.equals("No responde") && ed_m.equals("No responde") && raza_mascota.equals("No aplica")) {
 
