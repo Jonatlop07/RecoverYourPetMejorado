@@ -42,12 +42,12 @@ public class VentanaVerPerfil extends AppCompatActivity {
         edad.setText("Edad: " + perfil.getEdad());
         c_especiales.setText(perfil.getCaract_esp());
 
-        Bitmap bitmap = null;
-        ByteArrayInputStream bais = new ByteArrayInputStream(perfil.getFoto());
-        bitmap = BitmapFactory.decodeStream(bais);
-        imgFoto.setImageBitmap(bitmap);
-
-
+        if (perfil.getFoto() != null) {
+            Bitmap bitmap = null;
+            ByteArrayInputStream bais = new ByteArrayInputStream(perfil.getFoto());
+            bitmap = BitmapFactory.decodeStream(bais);
+            imgFoto.setImageBitmap(bitmap);
+        }
     }
 
     @Override

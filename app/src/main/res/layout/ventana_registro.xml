@@ -23,7 +23,7 @@
             android:text="@string/sign_up"
             android:textColor="#FFFFFF"
             android:textColorHighlight="#2E2A2A"
-            android:textSize="30sp"
+            android:textSize="28sp"
             android:textStyle="bold" />
 
         <EditText

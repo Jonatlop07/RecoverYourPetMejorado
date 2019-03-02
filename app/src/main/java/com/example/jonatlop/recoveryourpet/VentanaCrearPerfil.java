@@ -148,16 +148,21 @@ public class VentanaCrearPerfil extends AppCompatActivity {
 
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        Uri selectedImage = data.getData();
-        InputStream is;
-        try {
-            is = getContentResolver().openInputStream(selectedImage);
-            BufferedInputStream bis = new BufferedInputStream(is);
-            Bitmap bitmap = BitmapFactory.decodeStream(bis);
-            iv.setImageBitmap(bitmap);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if ( resultCode == RESULT_OK ) {
+            Uri selectedImage = data.getData();
+            InputStream is;
+            try {
+                is = getContentResolver().openInputStream(selectedImage);
+                BufferedInputStream bis = new BufferedInputStream(is);
+                Bitmap bitmap = BitmapFactory.decodeStream(bis);
+                iv.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else {
+            return;
         }
+
     }
 
     private byte[] imageToByte(ImageView image) {

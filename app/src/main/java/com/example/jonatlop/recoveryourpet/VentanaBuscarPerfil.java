@@ -129,6 +129,7 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
         Intent realizar_busqueda = new Intent (VentanaBuscarPerfil.this, VentanaListaPerfiles.class);
         realizar_busqueda.putExtra("parametros_busqueda",parametros_busqueda);
         startActivity(realizar_busqueda);
+        finish();
     }
 
     @Override

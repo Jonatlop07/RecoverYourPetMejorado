@@ -10,7 +10,8 @@
     <item
         android:id="@+id/item_salir"
         android:icon="@android:drawable/ic_lock_power_off"
-        android:title="@string/salir_app" />
+        android:title="@string/salir_app"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/item_micuenta"

@@ -55,9 +55,11 @@ public class Adaptador extends BaseAdapter {
         perfTamanio.setText(perfil.getTamanio());
         perfEdad.setText(perfil.getEdad());
 
-        ByteArrayInputStream bais = new ByteArrayInputStream(perfil.getFoto());
-        bitmap = BitmapFactory.decodeStream(bais);
-        imgFoto.setImageBitmap(bitmap);
+        if (perfil.getFoto() != null) {
+            ByteArrayInputStream bais = new ByteArrayInputStream(perfil.getFoto());
+            bitmap = BitmapFactory.decodeStream(bais);
+            imgFoto.setImageBitmap(bitmap);
+        }
 
         return convertView;
     }

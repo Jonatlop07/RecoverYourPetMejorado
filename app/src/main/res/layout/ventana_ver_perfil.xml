@@ -79,7 +79,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:contentDescription="@string/descripcion_perrito" />
+            android:contentDescription="@string/descripcion_perrito"
+            app:srcCompat="@drawable/imagen_predeterminada"/>
 
         <TextView
             android:id="@+id/c_m"

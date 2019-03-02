@@ -20,7 +20,7 @@
             android:padding="15dp"
             android:text="@string/Bienvenida"
             android:textColor="#FFFFFF"
-            android:textSize="40sp"
+            android:textSize="32sp"
             android:textStyle="bold"
             android:typeface="serif" />
 

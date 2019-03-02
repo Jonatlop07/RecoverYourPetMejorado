@@ -14,7 +14,7 @@
         android:padding="15dp"
         android:text="@string/lista_perfiles"
         android:textColor="#FFFFFF"
-        android:textSize="30sp"
+        android:textSize="28sp"
         android:textStyle="bold"
         android:typeface="serif" />
 
