@@ -1,4 +1,4 @@
-package com.example.jonatlop.recoveryourpet;
+package com.example.jonatlop.recoveryourpet.Ventanas;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.jonatlop.recoveryourpet.Entidades.PerfilMascota;
+import com.example.jonatlop.recoveryourpet.R;
 
 import java.io.ByteArrayInputStream;
 
@@ -34,8 +35,8 @@ public class VentanaVerPerfil extends AppCompatActivity {
         imgFoto = (ImageView) findViewById(R.id.f_m);
 
         nombre.setText(perfil.getNombre());
-        especie.setText(perfil.getEspecie());
-        genero.setText(perfil.getGenero());
+        especie.setText("Especie: " + perfil.getEspecie());
+        genero.setText("Género: " + perfil.getGenero());
         raza.setText("Raza: " + perfil.getRaza());
         tamanio.setText("Tamaño: " + perfil.getTamanio());
         edad.setText("Edad: " + perfil.getEdad());

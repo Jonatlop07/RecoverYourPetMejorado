@@ -50,10 +50,12 @@
 
     <string name="contexto">"Si has encontrado a una mascota puedes buscarla por medio de los siguientes parámetros:\n\n- Especie\n- Género\n- Raza\n- Tamaño\n- Edad"</string>
 
-    <string name="lista_perfiles">Lista de resultados</string>
+    <string name="lista_perfiles">"Lista de resultados"</string>
 
-    <string name="verInfoCuenta">Ver información de la cuenta</string>
-    <string name="verPerfilesCreados">Ver perfiles creados</string>
+    <string name="verInfoCuenta">"Ver información de la cuenta"</string>
+    <string name="verPerfilesCreados">"Ver perfiles creados"</string>
+
+    <string name="enviarDatos">"Enviar datos de contacto"</string>
 
 
 

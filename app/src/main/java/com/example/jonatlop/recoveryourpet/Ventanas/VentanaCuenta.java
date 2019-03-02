@@ -1,4 +1,4 @@
-package com.example.jonatlop.recoveryourpet;
+package com.example.jonatlop.recoveryourpet.Ventanas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.jonatlop.recoveryourpet.R;
 
 public class VentanaCuenta extends AppCompatActivity {
     private String correo_usuario;

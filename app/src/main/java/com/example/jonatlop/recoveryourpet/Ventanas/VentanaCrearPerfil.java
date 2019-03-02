@@ -1,11 +1,13 @@
-package com.example.jonatlop.recoveryourpet;
+package com.example.jonatlop.recoveryourpet.Ventanas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,29 +15,51 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.jonatlop.recoveryourpet.R;
+
+import java.io.BufferedInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 
 import OpenHelper.AlmacenPerfilesMascotas;
 
-public class VentanaBuscarPerfil extends AppCompatActivity {
+public class VentanaCrearPerfil extends AppCompatActivity {
+    public static int SELECT_PICTURE = 1;
+
+    private String name = "";
+
+    private AlmacenPerfilesMascotas helper = new AlmacenPerfilesMascotas( this, "BD_Mascotas", null, 1 );
 
     private Spinner especie_mascota, genero_mascota, raza_perro, raza_gato, tam_mascota, edad_mascota;
+    private EditText nombre_mascota, caract_esp;
+    private ImageView iv;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.ventana_buscar_perfil );
+        setContentView( R.layout.ventana_crear_perfil );
 
-        especie_mascota = (Spinner) findViewById( R.id.especieMascota );
-        genero_mascota = (Spinner) findViewById( R.id.generoMascota );
-        raza_perro = (Spinner) findViewById( R.id.razaPerro );
-        raza_gato = (Spinner) findViewById( R.id.razaGato );
-        tam_mascota = (Spinner) findViewById( R.id.tamañoMascota );
-        edad_mascota = (Spinner) findViewById( R.id.edadMascota );
+        name = Environment.getExternalStorageDirectory() + "/test.jpg";
+
+        nombre_mascota= (EditText) findViewById( R.id.nombre_m );
+        caract_esp = (EditText) findViewById( R.id.caract_especificas );
+        especie_mascota = (Spinner) findViewById( R.id.especie_m );
+        genero_mascota = (Spinner) findViewById( R.id.genero_m );
+        raza_perro = (Spinner) findViewById( R.id.raza_p );
+        raza_gato = (Spinner) findViewById( R.id.raza_g );
+        tam_mascota = (Spinner) findViewById( R.id.tam_m );
+        edad_mascota = (Spinner) findViewById( R.id.edad_m );
+        iv = (ImageView) findViewById( R.id.imgMascota );
 
         String[] opc_especie = { "Perro", "Gato" };
-        ArrayAdapter<String> ad_especie = new ArrayAdapter<String>( this, android.R.layout.simple_spinner_item, opc_especie );
+        ArrayAdapter<String> ad_especie = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, opc_especie);
         especie_mascota.setAdapter( ad_especie );
 
         String[] opc_genero = { "Macho", "Hembra" };
@@ -47,7 +71,7 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
         tam_mascota.setAdapter( ad_tam );
 
         String[] opc_edad = { "No responde", "Entre 0 y 1 años", "Entre 1 y 3 años",
-                              "Entre 3 y 5 años", "Entre 5 y 7 años", "Más de 7 años"};
+                              "Entre 3 y 5 años", "Entre 5 y 7 años", "Más de 7 años" };
         ArrayAdapter<String> ad_edad = new ArrayAdapter<String>( this, android.R.layout.simple_spinner_item, opc_edad );
         edad_mascota.setAdapter( ad_edad );
 
@@ -72,6 +96,16 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
                                     "Singapura", "Snowshoe", "Sokoke", "Sphynx", "Toyger"};
         ArrayAdapter<String> ad_raza_gato = new ArrayAdapter<String>( this, android.R.layout.simple_spinner_item, opc_raza_gato );
         raza_gato.setAdapter( ad_raza_gato );
+
+        Button btnInsertarImg = (Button) findViewById( R.id.inserta_foto );
+        btnInsertarImg.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick( View v ) {
+                Intent intent = new Intent( Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI );
+                int code = SELECT_PICTURE;
+                startActivityForResult( intent, code );
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu( Menu menu ) {
@@ -83,19 +117,21 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
         int id = item.getItemId();
 
         if ( id == R.id.item_micuenta ) {
-            Intent verCuenta = new Intent( VentanaBuscarPerfil.this, VentanaCuenta.class );
+            Intent verCuenta = new Intent( VentanaCrearPerfil.this, VentanaCuenta.class );
             startActivity( verCuenta );
             finish();
             return true;
         } else if ( id == R.id.item_crear ) {
-            Intent creaPerfil = new Intent( VentanaBuscarPerfil.this, VentanaCrearPerfil.class );
-            startActivity( creaPerfil );
-            finish();
+            nombre_mascota.setText( "" );
+            caract_esp.setText( "" );
             return true;
         } else if ( id == R.id.item_buscar ) {
+            Intent buscaPerfil = new Intent( VentanaCrearPerfil.this, VentanaBuscarPerfil.class );
+            startActivity( buscaPerfil );
+            finish();
             return true;
         } else if ( id == R.id.item_cerrar ) {
-            Intent cierraSesion = new Intent( VentanaBuscarPerfil.this, VentanaIngreso.class );
+            Intent cierraSesion = new Intent( VentanaCrearPerfil.this, VentanaIngreso.class );
             startActivity( cierraSesion );
             finish();
             return true;
@@ -106,27 +142,61 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
         return super.onOptionsItemSelected( item );
     }
 
-    @RequiresApi( api = Build.VERSION_CODES.KITKAT )
-    public void RealizarBusqueda ( View view ) {
+    @Override
+    protected void onActivityResult ( int requestCode, int resultCode, Intent data ) {
+        if ( resultCode == RESULT_OK ) {
+            Uri selectedImage = data.getData();
+            InputStream is;
+            try {
+                is = getContentResolver().openInputStream( selectedImage );
+                BufferedInputStream bis = new BufferedInputStream( is );
+                Bitmap bitmap = BitmapFactory.decodeStream( bis );
+                iv.setImageBitmap( bitmap );
+            } catch ( FileNotFoundException e ) {
+                e.printStackTrace();
+            }
+        } else {
+            return;
+        }
+
+    }
+
+    private byte[] imageToByte( ImageView image ) {
+        Bitmap bitmap = ( (BitmapDrawable) image.getDrawable() ).getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress( Bitmap.CompressFormat.PNG, 100, stream );
+        byte[] byteArray = stream.toByteArray();
+        return byteArray;
+    }
+
+    public void RegistrarPerfil (View view) {
+        String nombre_m = nombre_mascota.getText().toString();
         String especie_m = especie_mascota.getSelectedItem().toString();
         String genero_m = genero_mascota.getSelectedItem().toString();
         String tam_m = tam_mascota.getSelectedItem().toString();
         String edad_m = edad_mascota.getSelectedItem().toString();
-
+        String caract_esp_m = caract_esp.getText().toString();
         String raza_m;
+        byte[] foto_byte = imageToByte( iv );
 
-        if ( especie_m.equals( "Perro" ) ) {
+        if (especie_m.equals( "Perro" ) ) {
             raza_m = raza_perro.getSelectedItem().toString();
         } else {
             raza_m = raza_gato.getSelectedItem().toString();
         }
 
-        String[] parametros_busqueda = { especie_m, genero_m, raza_m, tam_m, edad_m };
+        if ( nombre_m.isEmpty() ) {
+            Toast.makeText( getApplicationContext(), "Por favor, ingresa el nombre de la mascota",
+                           Toast.LENGTH_SHORT ).show();
+        } else {
+            nombre_mascota.setText( "" );
+            caract_esp.setText( "" );
+            helper.abrirBD();
+            helper.insertarPerfil( nombre_m, especie_m, genero_m, raza_m, tam_m, edad_m, caract_esp_m, foto_byte );
+            helper.cerrarBD();
 
-        Intent realizar_busqueda = new Intent ( VentanaBuscarPerfil.this, VentanaListaPerfiles.class );
-        realizar_busqueda.putExtra( "parametros_busqueda", parametros_busqueda );
-        startActivity( realizar_busqueda );
-        finish();
+            Toast.makeText( getApplicationContext(), "Perfil completado y guardado con éxito.", Toast.LENGTH_LONG ).show();
+        }
     }
 
     @Override
@@ -137,7 +207,7 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
         builder.setPositiveButton( "Confirmar", new DialogInterface.OnClickListener() {
             @Override
             public void onClick( DialogInterface dialog, int which ) {
-                Intent regresar_ingreso = new Intent( VentanaBuscarPerfil.this, VentanaIngreso.class );
+                Intent regresar_ingreso = new Intent( VentanaCrearPerfil.this, VentanaIngreso.class );
                 startActivity( regresar_ingreso );
                 finish();
             }

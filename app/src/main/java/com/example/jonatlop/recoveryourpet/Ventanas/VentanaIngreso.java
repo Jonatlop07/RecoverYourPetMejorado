@@ -1,10 +1,9 @@
-package com.example.jonatlop.recoveryourpet;
+package com.example.jonatlop.recoveryourpet.Ventanas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
@@ -14,6 +13,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.jonatlop.recoveryourpet.R;
 
 import OpenHelper.AlmacenDatosUsuario;
 

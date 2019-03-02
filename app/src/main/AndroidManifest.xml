@@ -9,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".VentanaVerPerfil"></activity>
-        <activity android:name=".VentanaListaPerfiles" />
-        <activity android:name=".VentanaBuscarPerfil" />
-        <activity android:name=".VentanaCrearPerfil" />
-        <activity android:name=".VentanaCuenta" />
+        <activity android:name=".Ventanas.VentanaVerPerfil"></activity>
+        <activity android:name=".Ventanas.VentanaListaPerfiles" />
+        <activity android:name=".Ventanas.VentanaBuscarPerfil" />
+        <activity android:name=".Ventanas.VentanaCrearPerfil" />
+        <activity android:name=".Ventanas.VentanaCuenta" />
         <activity
-            android:name=".VentanaRegistro"
+            android:name=".Ventanas.VentanaRegistro"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".VentanaIngreso"
+            android:name=".Ventanas.VentanaIngreso"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".VentanaInformacion"
+            android:name=".Ventanas.VentanaInformacion"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
-            android:name=".VentanaInicio"
+            android:name=".Ventanas.VentanaInicio"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

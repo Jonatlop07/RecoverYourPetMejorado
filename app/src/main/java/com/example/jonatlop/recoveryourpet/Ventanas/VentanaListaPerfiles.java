@@ -1,4 +1,4 @@
-package com.example.jonatlop.recoveryourpet;
+package com.example.jonatlop.recoveryourpet.Ventanas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.jonatlop.recoveryourpet.Entidades.PerfilMascota;
+import com.example.jonatlop.recoveryourpet.R;
 import com.example.jonatlop.recoveryourpet.utilidades.Adaptador;
 import com.example.jonatlop.recoveryourpet.utilidades.Utilidades;
 

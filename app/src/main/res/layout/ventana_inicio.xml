@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFC90E"
     android:orientation="vertical"
-    tools:context=".VentanaInicio">
+    tools:context=".Ventanas.VentanaInicio">
 
 
     <ScrollView

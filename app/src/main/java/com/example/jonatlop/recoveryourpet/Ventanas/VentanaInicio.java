@@ -1,4 +1,4 @@
-package com.example.jonatlop.recoveryourpet;
+package com.example.jonatlop.recoveryourpet.Ventanas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -7,17 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class VentanaInformacion extends AppCompatActivity {
+import com.example.jonatlop.recoveryourpet.R;
+
+public class VentanaInicio extends AppCompatActivity {
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
-        setContentView( R.layout.ventana_informacion );
+        setContentView( R.layout.ventana_inicio );
     }
 
-    public void Siguiente ( View view ) {
-        Intent siguiente = new Intent( this, VentanaIngreso.class );
-        startActivity( siguiente );
+    public void Comenzar( View view ) {
+        Intent comenzar = new Intent( this, VentanaInformacion.class );
+        startActivity( comenzar );
         finish();
     }
 
@@ -35,7 +37,7 @@ public class VentanaInformacion extends AppCompatActivity {
         });
         builder.setNegativeButton( "Cancelar", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick( DialogInterface dialog, int which ) {
                 dialog.cancel();
             }
         });
