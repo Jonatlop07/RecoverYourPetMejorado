@@ -7,13 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class VentanaCuenta extends AppCompatActivity {
+    private String correo_usuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ventana_cuenta);
+
+        correo_usuario = getIntent().getExtras().getString("correo");
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -46,6 +50,14 @@ public class VentanaCuenta extends AppCompatActivity {
             System.exit(0);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void verInfoCuenta (View view) {
+
+    }
+
+    public void verPerfilesCreados (View view) {
+
     }
 
     @Override

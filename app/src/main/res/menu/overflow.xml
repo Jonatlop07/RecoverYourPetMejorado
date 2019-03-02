@@ -4,14 +4,12 @@
 
     <item
         android:id="@+id/item_cerrar"
-        android:icon="@android:drawable/presence_offline"
         android:title="@string/cerrar_sesion"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
     <item
         android:id="@+id/item_salir"
-        android:icon="@android:drawable/ic_lock_power_off"
         android:title="@string/salir_app"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/item_micuenta"

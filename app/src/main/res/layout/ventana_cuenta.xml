@@ -14,16 +14,36 @@
         android:padding="15dp"
         android:text="@string/mi_cuenta"
         android:textColor="#FFFFFF"
-        android:textSize="40sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         android:typeface="serif" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rounded_blue"
+        android:onClick="verInfoCuenta"
+        android:text="@string/verInfoCuenta"
+        android:textColor="#FFF"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="30dp"
-        android:text="@string/contexto" />
+        android:layout_marginRight="40dp"
+        android:background="@drawable/rounded_blue"
+        android:onClick="verPerfilesCreados"
+        android:text="@string/verPerfilesCreados"
+        android:textColor="#FFF"
+        android:textSize="22sp" />
+
 
 </LinearLayout>

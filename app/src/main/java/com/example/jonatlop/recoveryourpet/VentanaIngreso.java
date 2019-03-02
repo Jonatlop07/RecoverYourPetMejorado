@@ -41,6 +41,7 @@ public class VentanaIngreso extends AppCompatActivity {
         try (Cursor cursor = helper.ConsultarCorreoClave(correo_u, clave_u)) {
             if (cursor.getCount() > 0) {
                 Intent iniciar_sesion = new Intent (getApplicationContext(), VentanaCuenta.class);
+                iniciar_sesion.putExtra("correo", correo_u);
                 startActivity(iniciar_sesion);
                 finish();
             } else {

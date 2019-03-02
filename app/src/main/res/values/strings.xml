@@ -52,5 +52,9 @@
 
     <string name="lista_perfiles">Lista de resultados</string>
 
+    <string name="verInfoCuenta">Ver información de la cuenta</string>
+    <string name="verPerfilesCreados">Ver perfiles creados</string>
+
+
 
 </resources>
