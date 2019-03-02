@@ -7,22 +7,20 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.jonatlop.recoveryourpet.utilidades.Utilidades;
+
 public class AlmacenDatosUsuario extends SQLiteOpenHelper {
-    public AlmacenDatosUsuario(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public AlmacenDatosUsuario( Context context, String name, SQLiteDatabase.CursorFactory factory, int version ) {
+        super( context, name, factory, version );
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        String query ="CREATE TABLE datos_usuarios (" +
-                "_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nombres TEXT, apellidos TEXT, genero TEXT, " +
-                "telefono TEXT, correo TEXT, clave TEXT, nperfiles INTEGER)";
-        db.execSQL(query);
+    public void onCreate( SQLiteDatabase db ) {
+        db.execSQL( Utilidades.CREAR_TABLA_USUARIO );
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade( SQLiteDatabase db, int oldVersion, int newVersion ) {
 
     }
 
@@ -36,28 +34,32 @@ public class AlmacenDatosUsuario extends SQLiteOpenHelper {
     }
 
     //Método que permite insertar registros en la tabla datos_usuarios
-    public void insertarRegistro(String nombres_us, String apellidos_us,
+    public void insertarRegistro( String nombres_us, String apellidos_us,
                                  String genero_us, String telefono_us,
-                                 String correo_us, String clave_us) {
+                                 String correo_us, String clave_us ) {
 
         ContentValues valores = new ContentValues();
         int nPerfiles_us = 0;
-        valores.put("nombres", nombres_us);
-        valores.put("apellidos", apellidos_us);
-        valores.put("genero", genero_us);
-        valores.put("telefono", telefono_us);
-        valores.put("correo", correo_us);
-        valores.put("clave", clave_us);
-        valores.put("nperfiles", nPerfiles_us);
-        this.getWritableDatabase().insert("datos_usuarios", null, valores);
+        valores.put(Utilidades.CAMPO_NOMBRES_USUARIO, nombres_us);
+        valores.put(Utilidades.CAMPO_APELLIDOS_USUARIO, apellidos_us);
+        valores.put(Utilidades.CAMPO_GENERO_USUARIO, genero_us);
+        valores.put(Utilidades.CAMPO_TELEFONO_USUARIO, telefono_us);
+        valores.put(Utilidades.CAMPO_CORREO_USUARIO, correo_us);
+        valores.put(Utilidades.CAMPO_CLAVE_USUARIO, clave_us);
+        valores.put(Utilidades.CAMPO_NPERFILES_USUARIO, nPerfiles_us);
+        this.getWritableDatabase().insert(Utilidades.TABLA_USUARIO, null, valores);
     }
 
     //Método que permite validar si el usuario existe
-    public Cursor ConsultarCorreoClave (String correo_usu, String clave_usu) throws SQLException {
+    public Cursor ConsultarCorreoClave ( String correo_usu, String clave_usu ) throws SQLException {
+
         Cursor mcursor = null;
-        mcursor = this.getReadableDatabase().query("datos_usuarios",
-                new String[]{"_ID", "nombres", "apellidos", "genero", "telefono", "correo", "clave", "nperfiles"},
-                "correo like '"+correo_usu+"' and clave like '"+clave_usu+"' ", null, null, null, null);
+        final String VALIDACION_DATOS_USUARIO = ""+Utilidades.CAMPO_CORREO_USUARIO+" like '"+correo_usu+"' and " +
+                                                ""+Utilidades.CAMPO_CLAVE_USUARIO+" like '"+clave_usu+"' ";
+
+        mcursor = this.getReadableDatabase().query( Utilidades.TABLA_USUARIO, Utilidades.CAMPOS_USUARIO,
+                                                    VALIDACION_DATOS_USUARIO, null, null, null, null);
+
         return mcursor;
     }
 }

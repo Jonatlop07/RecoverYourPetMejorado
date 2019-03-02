@@ -1,4 +1,4 @@
-package com.example.jonatlop.recoveryourpet;
+package com.example.jonatlop.recoveryourpet.Entidades;
 
 import java.io.Serializable;
 

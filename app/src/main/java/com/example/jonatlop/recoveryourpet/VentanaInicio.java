@@ -10,32 +10,32 @@ import android.view.View;
 public class VentanaInicio extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ventana_inicio);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.ventana_inicio );
     }
 
-    public void Comenzar (View view) {
-        Intent comenzar = new Intent(this, VentanaInformacion.class);
-        startActivity(comenzar);
+    public void Comenzar( View view ) {
+        Intent comenzar = new Intent( this, VentanaInformacion.class );
+        startActivity( comenzar );
         finish();
     }
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder= new AlertDialog.Builder(this);
-        builder.setMessage("Estás a punto de cerrar la aplicación ¿Deseas continuar?");
-        builder.setTitle("Mensaje de confirmación");
-        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder= new AlertDialog.Builder( this );
+        builder.setMessage( "Estás a punto de cerrar la aplicación ¿Deseas continuar?" );
+        builder.setTitle( "Mensaje de confirmación" );
+        builder.setPositiveButton( "Confirmar", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick( DialogInterface dialog, int which ) {
                 finish();
-                System.exit(0);
+                System.exit( 0 );
             }
         });
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton( "Cancelar", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick( DialogInterface dialog, int which ) {
                 dialog.cancel();
             }
         });

@@ -1,14 +1,13 @@
 package com.example.jonatlop.recoveryourpet;
 
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.jonatlop.recoveryourpet.Entidades.PerfilMascota;
 
 import java.io.ByteArrayInputStream;
 

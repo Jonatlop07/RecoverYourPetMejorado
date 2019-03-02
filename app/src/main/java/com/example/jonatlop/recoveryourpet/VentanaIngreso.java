@@ -22,36 +22,36 @@ public class VentanaIngreso extends AppCompatActivity {
     private TextView tvRegistrese;
     private EditText correo_usuario, clave_usuario;
 
-    AlmacenDatosUsuario helper = new AlmacenDatosUsuario(this, "BD_Usuarios", null, 1);
+    AlmacenDatosUsuario helper = new AlmacenDatosUsuario( this, "BD_Usuarios", null, 1 );
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ventana_ingreso);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.ventana_ingreso );
 
-        correo_usuario = (EditText) findViewById(R.id.ingresa_correo);
-        clave_usuario = (EditText) findViewById(R.id.ingresa_clave);
-        tvRegistrese = (TextView) findViewById(R.id.tv_Registrese);
+        correo_usuario = (EditText) findViewById( R.id.ingresa_correo );
+        clave_usuario = (EditText) findViewById( R.id.ingresa_clave );
+        tvRegistrese = (TextView) findViewById( R.id.tv_Registrese );
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    public void IniciarSesion(View view) {
+    @RequiresApi( api = Build.VERSION_CODES.KITKAT )
+    public void IniciarSesion( View view ) {
         String correo_u = correo_usuario.getText().toString();
         String clave_u = clave_usuario.getText().toString();
-        try (Cursor cursor = helper.ConsultarCorreoClave(correo_u, clave_u)) {
-            if (cursor.getCount() > 0) {
-                Intent iniciar_sesion = new Intent (getApplicationContext(), VentanaCuenta.class);
-                iniciar_sesion.putExtra("correo", correo_u);
-                startActivity(iniciar_sesion);
+        try ( Cursor cursor = helper.ConsultarCorreoClave( correo_u, clave_u ) ) {
+            if ( cursor.getCount() > 0 ) {
+                Intent iniciar_sesion = new Intent ( getApplicationContext(), VentanaCuenta.class );
+                iniciar_sesion.putExtra( "correo", correo_u );
+                startActivity( iniciar_sesion );
                 finish();
             } else {
-                Toast.makeText(getApplicationContext(), "Correo y/o clave incorrectos",
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText( getApplicationContext(), "Correo y/o clave incorrectos",
+                                Toast.LENGTH_SHORT ).show();
             }
-            correo_usuario.setText("");
-            clave_usuario.setText("");
+            correo_usuario.setText( "" );
+            clave_usuario.setText( "" );
             correo_usuario.findFocus();
-        } catch (SQLException e) {
+        } catch ( SQLException e ) {
             e.printStackTrace();
         }
     }
@@ -64,17 +64,17 @@ public class VentanaIngreso extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        AlertDialog.Builder builder= new AlertDialog.Builder(this);
-        builder.setMessage("Estás a punto de cerrar la aplicación ¿Deseas continuar?");
-        builder.setTitle("Mensaje de confirmación");
-        builder.setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder builder= new AlertDialog.Builder( this );
+        builder.setMessage( "Estás a punto de cerrar la aplicación ¿Deseas continuar?" );
+        builder.setTitle( "Mensaje de confirmación" );
+        builder.setPositiveButton( "Confirmar" , new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
-                System.exit(0);
+                System.exit( 0 );
             }
         });
-        builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton( "Cancelar" , new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();

@@ -9,23 +9,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.annotation.Nullable;
 
 import com.example.jonatlop.recoveryourpet.R;
+import com.example.jonatlop.recoveryourpet.utilidades.Utilidades;
 
 public class AlmacenPerfilesMascotas extends SQLiteOpenHelper {
 
-    public AlmacenPerfilesMascotas(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public AlmacenPerfilesMascotas( Context context, String name, SQLiteDatabase.CursorFactory factory, int version ) {
+        super( context, name, factory, version );
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
-        String query ="CREATE TABLE perfiles_mascotas (_ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "nombre TEXT, especie TEXT, generoM TEXT, raza TEXT, tamanio TEXT, edad TEXT, " +
-                "foto BLOB, caractEspeciales TEXT)";
-        db.execSQL(query);
+    public void onCreate( SQLiteDatabase db ) {
+        db.execSQL( Utilidades.CREAR_TABLA_MASCOTA );
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade( SQLiteDatabase db, int oldVersion, int newVersion ) {
 
     }
 
@@ -33,78 +31,101 @@ public class AlmacenPerfilesMascotas extends SQLiteOpenHelper {
 
     public void cerrarBD() { this.close(); }
 
-    public void insertarPerfil(String nomb_m, String esp_m, String gen_m,
+    public void insertarPerfil( String nomb_m, String esp_m, String gen_m,
                                String raza_mascota, String tamanio_m, String ed_m,
-                               String c_esp, byte[] foto_m) {
+                               String c_esp, byte[] foto_m ) {
 
         ContentValues datos = new ContentValues();
-        datos.put("nombre", nomb_m);
-        datos.put("especie", esp_m);
-        datos.put("generoM", gen_m);
-        datos.put("raza", raza_mascota);
-        datos.put("tamanio", tamanio_m);
-        datos.put("edad", ed_m);
-        datos.put("foto", foto_m);
-        datos.put("caractEspeciales", c_esp);
-        this.getWritableDatabase().insert("perfiles_mascotas", null, datos);
+        datos.put( Utilidades.CAMPO_NOMBRE_MASCOTA, nomb_m );
+        datos.put( Utilidades.CAMPO_ESPECIE_MASCOTA, esp_m );
+        datos.put( Utilidades.CAMPO_GENERO_MASCOTA, gen_m );
+        datos.put( Utilidades.CAMPO_RAZA_MASCOTA, raza_mascota );
+        datos.put( Utilidades.CAMPO_TAMANIO_MASCOTA, tamanio_m );
+        datos.put( Utilidades.CAMPO_EDAD_MASCOTA, ed_m );
+        datos.put( Utilidades.CAMPO_FOTO_MASCOTA, foto_m );
+        datos.put( Utilidades.CAMPO_CARACT_ESP_MASCOTA, c_esp );
+        this.getWritableDatabase().insert( Utilidades.TABLA_MASCOTA, null, datos );
     }
 
-    public Cursor ConsultarPerfiles (String esp_m, String gen_m, String raza_mascota,
-                                     String tamanio_m, String ed_m) throws SQLException {
+    public Cursor ConsultarPerfiles ( String esp_m, String gen_m, String raza_mascota,
+                                     String tamanio_m, String ed_m ) throws SQLException {
 
         Cursor mcursor = null;
 
-        String[] campos = new String[] {"nombre", "especie", "generoM", "raza", "tamanio", "edad", "foto", "caractEspeciales"};
+        final String BUSQUEDA_BASICA = ""+Utilidades.CAMPO_ESPECIE_MASCOTA+" like '"+esp_m+"' and " +
+                                       ""+Utilidades.CAMPO_GENERO_MASCOTA+" like '"+gen_m+"' ";
 
-        if (tamanio_m.equals("No responde") && ed_m.equals("No responde") && raza_mascota.equals("No aplica")) {
+        final String BUSQUEDA_RAZA = ""+Utilidades.CAMPO_ESPECIE_MASCOTA+" like '"+esp_m+"' and " +
+                                     ""+Utilidades.CAMPO_GENERO_MASCOTA+" like '"+gen_m+"' and " +
+                                     ""+Utilidades.CAMPO_RAZA_MASCOTA+" like '"+raza_mascota+"' ";
 
-            mcursor = this.getReadableDatabase().query("perfiles_mascotas", campos,
-                    "especie like '"+esp_m+"' and generoM like '"+gen_m+"' ", null, null, null, null);
+        final String BUSQUEDA_EDAD = ""+Utilidades.CAMPO_ESPECIE_MASCOTA+" like '"+esp_m+"' and " +
+                                     ""+Utilidades.CAMPO_GENERO_MASCOTA+" like '"+gen_m+"' and " +
+                                     ""+Utilidades.CAMPO_EDAD_MASCOTA+" like '"+ed_m+"' ";
 
-        } else if (tamanio_m.equals("No responde") && ed_m.equals("No responde") && !raza_mascota.equals("No aplica")) {
+        final String BUSQUEDA_EDAD_RAZA = ""+Utilidades.CAMPO_ESPECIE_MASCOTA+" like '"+esp_m+"' and " +
+                                          ""+Utilidades.CAMPO_GENERO_MASCOTA+" like '"+gen_m+"' and " +
+                                          ""+Utilidades.CAMPO_RAZA_MASCOTA+" like '"+raza_mascota+"' and " +
+                                          ""+Utilidades.CAMPO_EDAD_MASCOTA+" like '"+ed_m+"' ";
 
-            mcursor = this.getReadableDatabase().query("perfiles_mascotas", campos,
-                    "especie like '"+esp_m+"' and generoM like '"+gen_m+"' and raza like '"+raza_mascota+"' ",
-                    null, null, null, null);
+        final String BUSQUEDA_TAMANIO = ""+Utilidades.CAMPO_ESPECIE_MASCOTA+" like '"+esp_m+"' and " +
+                                        ""+Utilidades.CAMPO_GENERO_MASCOTA+" like '"+gen_m+"' and " +
+                                        ""+Utilidades.CAMPO_TAMANIO_MASCOTA+" like '"+tamanio_m+"' ";
 
-        } else if (tamanio_m.equals("No responde") && !ed_m.equals("No responde") && raza_mascota.equals("No aplica")) {
+        final String BUSQUEDA_TAMANIO_RAZA = ""+Utilidades.CAMPO_ESPECIE_MASCOTA+" like '"+esp_m+"' and " +
+                                             ""+Utilidades.CAMPO_GENERO_MASCOTA+" like '"+gen_m+"' and " +
+                                             ""+Utilidades.CAMPO_RAZA_MASCOTA+" like '"+raza_mascota+"' and " +
+                                             ""+Utilidades.CAMPO_TAMANIO_MASCOTA+" like '"+tamanio_m+"' ";
 
-            mcursor = this.getReadableDatabase().query("perfiles_mascotas", campos,
-                    "especie like '"+esp_m+"' and generoM like '"+gen_m+"' and edad like '"+ed_m+"' ",
-                    null, null, null, null);
+        final String BUSQUEDA_TAMANIO_EDAD = ""+Utilidades.CAMPO_ESPECIE_MASCOTA+" like '"+esp_m+"' and " +
+                                             ""+Utilidades.CAMPO_GENERO_MASCOTA+" like '"+gen_m+"' and " +
+                                             ""+Utilidades.CAMPO_TAMANIO_MASCOTA+" like '"+tamanio_m+"' and " +
+                                             ""+Utilidades.CAMPO_EDAD_MASCOTA+" like '"+ed_m+"' ";
 
-        } else if (tamanio_m.equals("No responde") && !ed_m.equals("No responde") && !raza_mascota.equals("No aplica")) {
+        final String BUSQUEDA_COMPLETA = ""+Utilidades.CAMPO_ESPECIE_MASCOTA+" like '"+esp_m+"' and " +
+                                         ""+Utilidades.CAMPO_GENERO_MASCOTA+" like '"+gen_m+"' and " +
+                                         ""+Utilidades.CAMPO_RAZA_MASCOTA+" like '"+raza_mascota+"' and " +
+                                         ""+Utilidades.CAMPO_EDAD_MASCOTA+" like '"+ed_m+"' and " +
+                                         ""+Utilidades.CAMPO_TAMANIO_MASCOTA+" like '"+tamanio_m+"' ";
 
-            mcursor = this.getReadableDatabase().query("perfiles_mascotas", campos,
-                    "especie like '"+esp_m+"' and generoM like '"+gen_m+"' and raza like '"+raza_mascota+"' " +
-                    "and edad like '"+ed_m+"' ", null, null, null, null);
+        if ( tamanio_m.equals( "No responde" ) && ed_m.equals( "No responde" ) && raza_mascota.equals( "No aplica" ) ) {
 
-        } else if (!tamanio_m.equals("No responde") && ed_m.equals("No responde") && raza_mascota.equals("No aplica")) {
+            mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA, BUSQUEDA_BASICA,
+                                                        null, null, null, null );
 
-            mcursor = this.getReadableDatabase().query("perfiles_mascotas", campos,
-                    "especie like '"+esp_m+"' and generoM like '"+gen_m+"' and tamanio like '"+tamanio_m+"' ",
-                    null, null, null, null);
+        } else if ( tamanio_m.equals( "No responde" ) && ed_m.equals( "No responde" ) && !raza_mascota.equals( "No aplica" ) ) {
 
-        } else if (!tamanio_m.equals("No responde") && ed_m.equals("No responde") && !raza_mascota.equals("No aplica")) {
+            mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA, BUSQUEDA_RAZA,
+                                                        null, null, null, null );
 
-            mcursor = this.getReadableDatabase().query("perfiles_mascotas", campos,
-                    "especie like '"+esp_m+"' and generoM like '"+gen_m+"' and raza like '"+raza_mascota+"' " +
-                    "and tamanio like '"+tamanio_m+"' ", null, null, null, null);
+        } else if ( tamanio_m.equals( "No responde" ) && !ed_m.equals( "No responde" ) && raza_mascota.equals( "No aplica" ) ) {
 
-        } else if (!tamanio_m.equals("No responde") && !ed_m.equals("No responde") && raza_mascota.equals("No aplica")) {
+            mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA, BUSQUEDA_EDAD,
+                                                        null, null, null, null );
 
-            mcursor = this.getReadableDatabase().query("perfiles_mascotas", campos,
-                    "especie like '"+esp_m+"' and generoM like '"+gen_m+"' and tamanio like '"+tamanio_m+"' " +
-                    "and edad like '"+ed_m+"' ", null, null, null, null);
+        } else if ( tamanio_m.equals( "No responde" ) && !ed_m.equals( "No responde" ) && !raza_mascota.equals( "No aplica" ) ) {
 
+            mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA, BUSQUEDA_EDAD_RAZA,
+                                                        null, null, null, null );
+
+        } else if ( !tamanio_m.equals( "No responde" ) && ed_m.equals( "No responde" ) && raza_mascota.equals( "No aplica" ) ) {
+
+            mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA, BUSQUEDA_TAMANIO,
+                                                        null, null, null, null );
+
+        } else if ( !tamanio_m.equals( "No responde" ) && ed_m.equals( "No responde" ) && !raza_mascota.equals( "No aplica" ) ) {
+
+            mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA, BUSQUEDA_TAMANIO_RAZA,
+                                                        null, null, null, null );
+
+        } else if ( !tamanio_m.equals( "No responde" ) && !ed_m.equals( "No responde" ) && raza_mascota.equals( "No aplica" ) ) {
+
+            mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA, BUSQUEDA_TAMANIO_EDAD,
+                                                        null, null, null, null );
         } else {
-
-            mcursor = this.getReadableDatabase().query("perfiles_mascotas", campos,
-                    "especie like '"+esp_m+"' and generoM like '"+gen_m+"' and raza like '"+raza_mascota+"' " +
-                    "and edad like '"+ed_m+"' and tamanio like '"+tamanio_m+"' ", null, null, null, null);
-
+            mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA,
+                                                        BUSQUEDA_COMPLETA, null, null, null, null );
         }
-
 
         return mcursor;
     }
