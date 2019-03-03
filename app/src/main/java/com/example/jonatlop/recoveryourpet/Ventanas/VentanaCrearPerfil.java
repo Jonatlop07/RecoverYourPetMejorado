@@ -28,14 +28,14 @@ import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 
-import OpenHelper.AlmacenPerfilesMascotas;
+import OpenHelper.BaseDatosSQLite;
 
 public class VentanaCrearPerfil extends AppCompatActivity {
     public static int SELECT_PICTURE = 1;
 
     private String name = "";
 
-    private AlmacenPerfilesMascotas helper = new AlmacenPerfilesMascotas( this, "BD_Mascotas", null, 1 );
+    private BaseDatosSQLite helper = new BaseDatosSQLite( this, "BD_Mascotas", null, 1 );
 
     private Spinner especie_mascota, genero_mascota, raza_perro, raza_gato, tam_mascota, edad_mascota;
     private EditText nombre_mascota, caract_esp;
@@ -191,9 +191,9 @@ public class VentanaCrearPerfil extends AppCompatActivity {
         } else {
             nombre_mascota.setText( "" );
             caract_esp.setText( "" );
-            helper.abrirBD();
+            helper.abrir();
             helper.insertarPerfil( nombre_m, especie_m, genero_m, raza_m, tam_m, edad_m, caract_esp_m, foto_byte );
-            helper.cerrarBD();
+            helper.cerrar();
 
             Toast.makeText( getApplicationContext(), "Perfil completado y guardado con éxito.", Toast.LENGTH_LONG ).show();
         }

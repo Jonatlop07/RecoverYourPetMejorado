@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Ventanas.FragmentInformacionCuenta"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/cuenta_nombres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/registrarse_nombres"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/cuenta_apellidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/registrarse_apellidos"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/cuenta_genero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/registrarse_genero"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/cuenta_telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/telefono"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/cuenta_correo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/correo"
+        android:textSize="22sp" />
+
+</LinearLayout>

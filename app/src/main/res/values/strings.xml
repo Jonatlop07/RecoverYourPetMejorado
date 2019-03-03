@@ -32,6 +32,7 @@
 
     <string name="enunciado_especieMascota">"Especie:"</string>
     <string name="enunciado_generoMascota">"Género:"</string>
+    <string name="enunciado_razaMascota">"Raza:"</string>
     <string name="enunciado_razaPerro">"Raza(perro):"</string>
     <string name="enunciado_razaGato">"Raza(gato):"</string>
     <string name="enunciado_tamañoMascota">"Tamaño:"</string>
@@ -57,6 +58,8 @@
 
     <string name="enviarDatos">"Enviar datos de contacto"</string>
 
+    <string name="ingreseCorreo">"Ingrese su dirección de correo electrónico"</string>
+    <string name="validacion">"Validar"</string>
 
 
 </resources>

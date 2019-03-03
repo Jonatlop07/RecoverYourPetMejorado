@@ -18,32 +18,50 @@
         android:textStyle="bold"
         android:typeface="serif" />
 
-    <Button
-        android:id="@+id/button"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginRight="40dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/rounded_blue"
-        android:onClick="verInfoCuenta"
-        android:text="@string/verInfoCuenta"
-        android:textColor="#FFF"
-        android:textSize="22sp" />
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        style="?android:attr/buttonBarStyle" >
 
-    <Button
-        android:id="@+id/button2"
+        <Button
+            android:id="@+id/btn_verInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#34E73D"
+            android:text="@string/verInfoCuenta"
+            android:textColor="#FFF"
+            android:textSize="18sp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:onClick="onClick"/>
+
+        <Button
+            android:id="@+id/btn_verPerfiles"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#34E73D"
+            android:text="@string/verPerfilesCreados"
+            android:textColor="#FFF"
+            android:textSize="18sp"
+            style="?android:attr/buttonBarButtonStyle"
+            android:onClick="onClick"/>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/contenedorFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="40dp"
-        android:background="@drawable/rounded_blue"
-        android:onClick="verPerfilesCreados"
-        android:text="@string/verPerfilesCreados"
-        android:textColor="#FFF"
-        android:textSize="22sp" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp" >
 
+    </FrameLayout>
 
 </LinearLayout>

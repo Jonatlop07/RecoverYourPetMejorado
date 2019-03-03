@@ -16,14 +16,14 @@ import android.widget.Toast;
 
 import com.example.jonatlop.recoveryourpet.R;
 
-import OpenHelper.AlmacenDatosUsuario;
+import OpenHelper.BaseDatosSQLite;
 
 public class VentanaIngreso extends AppCompatActivity {
 
     private TextView tvRegistrese;
     private EditText correo_usuario, clave_usuario;
 
-    AlmacenDatosUsuario helper = new AlmacenDatosUsuario( this, "BD_Usuarios", null, 1 );
+    BaseDatosSQLite helper = new BaseDatosSQLite( this, "BD_Usuarios", null, 1 );
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -42,7 +42,6 @@ public class VentanaIngreso extends AppCompatActivity {
         try ( Cursor cursor = helper.ConsultarCorreoClave( correo_u, clave_u ) ) {
             if ( cursor.getCount() > 0 ) {
                 Intent iniciar_sesion = new Intent ( getApplicationContext(), VentanaCuenta.class );
-                iniciar_sesion.putExtra( "correo", correo_u );
                 startActivity( iniciar_sesion );
                 finish();
             } else {

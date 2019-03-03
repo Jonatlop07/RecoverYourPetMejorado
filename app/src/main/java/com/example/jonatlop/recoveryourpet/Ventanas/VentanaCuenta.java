@@ -2,6 +2,8 @@ package com.example.jonatlop.recoveryourpet.Ventanas;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,15 +13,21 @@ import android.view.View;
 
 import com.example.jonatlop.recoveryourpet.R;
 
-public class VentanaCuenta extends AppCompatActivity {
-    private String correo_usuario;
+public class VentanaCuenta extends AppCompatActivity
+        implements FragmentInformacionCuenta.OnFragmentInteractionListener, FragmentPerfiles.OnFragmentInteractionListener {
+
+    FragmentInformacionCuenta fragmentInfo;
+    FragmentPerfiles fragmentPerfiles;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.ventana_cuenta );
 
-        correo_usuario = getIntent().getExtras().getString( "correo" );
+        fragmentInfo = new FragmentInformacionCuenta();
+        fragmentPerfiles = new FragmentPerfiles();
+
+        getSupportFragmentManager().beginTransaction().add( R.id.contenedorFragment, fragmentInfo ).commit();
     }
 
     public boolean onCreateOptionsMenu( Menu menu ) {
@@ -39,7 +47,7 @@ public class VentanaCuenta extends AppCompatActivity {
             return true;
         } else if ( id == R.id.item_buscar ) {
             Intent buscaPerfil = new Intent( VentanaCuenta.this, VentanaBuscarPerfil.class );
-            startActivity(buscaPerfil);
+            startActivity( buscaPerfil );
             finish();
             return true;
         } else if (id == R.id.item_cerrar) {
@@ -54,12 +62,23 @@ public class VentanaCuenta extends AppCompatActivity {
         return super.onOptionsItemSelected( item );
     }
 
-    public void verInfoCuenta ( View view ) {
+    @Override
+    public void onFragmentInteraction(Uri uri) {
 
     }
 
-    public void verPerfilesCreados ( View view ) {
+    public void onClick( View view ) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
+        switch ( view.getId() ) {
+            case R.id.btn_verInfo:
+                transaction.replace( R.id.contenedorFragment, fragmentInfo );
+                break;
+            case R.id.btn_verPerfiles:
+                transaction.replace( R.id.contenedorFragment, fragmentPerfiles );
+                break;
+        }
+        transaction.commit();
     }
 
     @Override

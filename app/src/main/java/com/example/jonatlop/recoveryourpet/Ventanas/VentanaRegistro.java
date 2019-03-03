@@ -13,11 +13,11 @@ import android.widget.Toast;
 
 import com.example.jonatlop.recoveryourpet.R;
 
-import OpenHelper.AlmacenDatosUsuario;
+import OpenHelper.BaseDatosSQLite;
 
 public class VentanaRegistro extends AppCompatActivity {
 
-    private AlmacenDatosUsuario helper = new AlmacenDatosUsuario( this, "BD_Usuarios", null, 1 );
+    private BaseDatosSQLite helper = new BaseDatosSQLite( this, "BD_Usuarios", null, 1 );
 
     private EditText nombres_usuario, apellidos_usuario, telefono_usuario;
     private EditText correo_usuario, clave_usuario, confirmar_clave_usuario;
@@ -76,8 +76,9 @@ public class VentanaRegistro extends AppCompatActivity {
 
             Toast.makeText( getApplicationContext(), "Registro completado con éxito.", Toast.LENGTH_LONG).show();
 
-            Intent boton_registrarse = new Intent( this, VentanaCuenta.class );
+            Intent boton_registrarse = new Intent( VentanaRegistro.this, VentanaCuenta.class );
             startActivity( boton_registrarse );
+            finish();
         }
     }
 

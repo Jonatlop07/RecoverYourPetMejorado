@@ -19,34 +19,34 @@ public class VentanaVerPerfil extends AppCompatActivity {
     private ImageView imgFoto;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.ventana_ver_perfil);
+    protected void onCreate( Bundle savedInstanceState ) {
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.ventana_ver_perfil );
 
-        perfil = (PerfilMascota) getIntent().getSerializableExtra("objetoPerfil");
+        perfil = (PerfilMascota) getIntent().getSerializableExtra( "objetoPerfil" );
 
-        nombre =  (TextView) findViewById(R.id.n_m);
-        especie =  (TextView) findViewById(R.id.e_m);
-        genero =  (TextView) findViewById(R.id.g_m);
-        raza =  (TextView) findViewById(R.id.r_m);
-        tamanio =  (TextView) findViewById(R.id.t_m);
-        edad =  (TextView) findViewById(R.id.ed_m);
-        c_especiales =  (TextView) findViewById(R.id.c_m);
-        imgFoto = (ImageView) findViewById(R.id.f_m);
+        nombre =  (TextView) findViewById( R.id.n_m );
+        especie =  (TextView) findViewById( R.id.e_m );
+        genero =  (TextView) findViewById( R.id.g_m );
+        raza =  (TextView) findViewById( R.id.r_m );
+        tamanio =  (TextView) findViewById( R.id.t_m );
+        edad =  (TextView) findViewById( R.id.ed_m );
+        c_especiales =  (TextView) findViewById( R.id.c_m );
+        imgFoto = (ImageView) findViewById( R.id.f_m );
 
-        nombre.setText(perfil.getNombre());
-        especie.setText("Especie: " + perfil.getEspecie());
-        genero.setText("Género: " + perfil.getGenero());
-        raza.setText("Raza: " + perfil.getRaza());
-        tamanio.setText("Tamaño: " + perfil.getTamanio());
-        edad.setText("Edad: " + perfil.getEdad());
+        nombre.setText( perfil.getNombre() );
+        especie.setText( "Especie: " + perfil.getEspecie() );
+        genero.setText( "Género: " + perfil.getGenero() );
+        raza.setText( "Raza: " + perfil.getRaza() );
+        tamanio.setText( "Tamaño: " + perfil.getTamanio() );
+        edad.setText( "Edad: " + perfil.getEdad() );
         c_especiales.setText(perfil.getCaract_esp());
 
-        if (perfil.getFoto() != null) {
+        if ( perfil.getFoto() != null ) {
             Bitmap bitmap = null;
-            ByteArrayInputStream bais = new ByteArrayInputStream(perfil.getFoto());
-            bitmap = BitmapFactory.decodeStream(bais);
-            imgFoto.setImageBitmap(bitmap);
+            ByteArrayInputStream bais = new ByteArrayInputStream( perfil.getFoto() );
+            bitmap = BitmapFactory.decodeStream( bais );
+            imgFoto.setImageBitmap( bitmap );
         }
     }
 

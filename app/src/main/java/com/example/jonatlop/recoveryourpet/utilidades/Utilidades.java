@@ -12,14 +12,10 @@ public class Utilidades {
     public static final String CAMPO_CLAVE_USUARIO = "clave";
     public static final String CAMPO_NPERFILES_USUARIO = "nperfiles";
 
-    public static final String CREAR_TABLA_USUARIO = "CREATE TABLE "+TABLA_USUARIO+" ( "+CAMPO_ID_USUARIO+" INTEGER PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOMBRES_USUARIO+" TEXT, "+CAMPO_APELLIDOS_USUARIO+" TEXT, "+CAMPO_GENERO_USUARIO+" TEXT, "+CAMPO_TELEFONO_USUARIO+" TEXT, "+CAMPO_CORREO_USUARIO+" TEXT, "+CAMPO_CLAVE_USUARIO+" TEXT, "+CAMPO_NPERFILES_USUARIO+" INTEGER)";
-
     public static final String[] CAMPOS_USUARIO = { Utilidades.CAMPO_ID_USUARIO, Utilidades.CAMPO_NOMBRES_USUARIO,
                                                     Utilidades.CAMPO_APELLIDOS_USUARIO, Utilidades.CAMPO_GENERO_USUARIO,
                                                     Utilidades.CAMPO_TELEFONO_USUARIO, Utilidades.CAMPO_CORREO_USUARIO,
                                                     Utilidades.CAMPO_CLAVE_USUARIO, Utilidades.CAMPO_NPERFILES_USUARIO };
-
-
 
     public static final String TABLA_MASCOTA = "perfiles_mascotas";
     public static final String CAMPO_ID_MASCOTA = "_ID";
@@ -31,12 +27,34 @@ public class Utilidades {
     public static final String CAMPO_EDAD_MASCOTA = "edad";
     public static final String CAMPO_FOTO_MASCOTA = "foto";
     public static final String CAMPO_CARACT_ESP_MASCOTA = "caractEspeciales";
-
-    public static final String CREAR_TABLA_MASCOTA = "CREATE TABLE "+TABLA_MASCOTA+" ("+CAMPO_ID_MASCOTA+" INTEGER PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOMBRE_MASCOTA+" TEXT, "+CAMPO_ESPECIE_MASCOTA+" TEXT, "+CAMPO_GENERO_MASCOTA+" TEXT, "+CAMPO_RAZA_MASCOTA+" TEXT, "+CAMPO_TAMANIO_MASCOTA+" TEXT, "+CAMPO_EDAD_MASCOTA+" TEXT, "+CAMPO_FOTO_MASCOTA+" BLOB, "+CAMPO_CARACT_ESP_MASCOTA+" TEXT)";
+    //public static final String CAMPO_DUENIO_MASCOTA = "caractEspeciales";
 
     public static final String[] CAMPOS_MASCOTA = { Utilidades.CAMPO_NOMBRE_MASCOTA, Utilidades.CAMPO_ESPECIE_MASCOTA,
                                                     Utilidades.CAMPO_GENERO_MASCOTA, Utilidades.CAMPO_RAZA_MASCOTA,
                                                     Utilidades.CAMPO_TAMANIO_MASCOTA, Utilidades.CAMPO_EDAD_MASCOTA,
                                                     Utilidades.CAMPO_FOTO_MASCOTA, Utilidades.CAMPO_CARACT_ESP_MASCOTA };
+
+    public static final String CREAR_TABLA_USUARIO = "CREATE TABLE "+TABLA_USUARIO+" ( "+CAMPO_ID_USUARIO+" INTEGER " +
+                                                     "PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOMBRES_USUARIO+" TEXT, " +
+                                                     ""+CAMPO_APELLIDOS_USUARIO+" TEXT, "+CAMPO_GENERO_USUARIO+" " +
+                                                     "TEXT, "+CAMPO_TELEFONO_USUARIO+" TEXT, "+CAMPO_CORREO_USUARIO+" " +
+                                                     "TEXT, "+CAMPO_CLAVE_USUARIO+" TEXT, "+CAMPO_NPERFILES_USUARIO+" INTEGER)";
+
+    //, FOREIGN KEY("+CAMPO_CORREO_USUARIO+") REFERENCES " + "" +
+    //                                                     ""+TABLA_MASCOTA+"("+CAMPO_DUENIO_MASCOTA+")
+
+    public static final String CREAR_TABLA_MASCOTA = "CREATE TABLE "+TABLA_MASCOTA+" ("+CAMPO_ID_MASCOTA+" INTEGER " +
+                                                     "PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOMBRE_MASCOTA+" TEXT, "+
+                                                     ""+CAMPO_ESPECIE_MASCOTA+" TEXT, "+CAMPO_GENERO_MASCOTA+" " +
+                                                     "TEXT,"+CAMPO_RAZA_MASCOTA+" TEXT, "+CAMPO_TAMANIO_MASCOTA+" " +
+                                                     "TEXT, "+CAMPO_EDAD_MASCOTA+" TEXT, "+CAMPO_FOTO_MASCOTA+" " +
+                                                     "BLOB, "+CAMPO_CARACT_ESP_MASCOTA+" TEXT)";
+
+    /*, "+CAMPO_DUENIO_MASCOTA+" " +
+                                                     "TEXT, FOREIGN KEY("+CAMPO_DUENIO_MASCOTA+") REFERENCES " +
+                                                     ""+TABLA_USUARIO+"("+CAMPO_CORREO_USUARIO+") */
+
+
+
 
 }

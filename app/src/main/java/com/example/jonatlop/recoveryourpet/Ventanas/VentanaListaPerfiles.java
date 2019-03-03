@@ -20,11 +20,11 @@ import com.example.jonatlop.recoveryourpet.utilidades.Utilidades;
 
 import java.util.ArrayList;
 
-import OpenHelper.AlmacenPerfilesMascotas;
+import OpenHelper.BaseDatosSQLite;
 
 public class VentanaListaPerfiles extends AppCompatActivity {
 
-    private AlmacenPerfilesMascotas helper = new AlmacenPerfilesMascotas( this, "BD_Mascotas", null, 1 );
+    private BaseDatosSQLite helper = new BaseDatosSQLite( this, "BD_Mascotas", null, 1 );
 
     private String[] conjunto_datos = new String[ 5 ];
     private ListView lv;
@@ -39,7 +39,7 @@ public class VentanaListaPerfiles extends AppCompatActivity {
         lv = (ListView) findViewById( R.id.lista );
 
         conjunto_datos = getIntent().getExtras().getStringArray( "parametros_busqueda" );
-        Cursor cursor = helper.ConsultarPerfiles( conjunto_datos[ 0 ], conjunto_datos[ 1 ],
+        Cursor cursor = helper.ConsultarPerfilesMascotas( conjunto_datos[ 0 ], conjunto_datos[ 1 ],
                                                   conjunto_datos[ 2 ], conjunto_datos[ 3 ],
                                                   conjunto_datos[ 4 ] );
 
