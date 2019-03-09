@@ -3,6 +3,7 @@ package com.example.jonatlop.recoveryourpet.Ventanas;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -14,20 +15,33 @@ import android.view.View;
 import com.example.jonatlop.recoveryourpet.R;
 
 public class VentanaCuenta extends AppCompatActivity
-        implements FragmentInformacionCuenta.OnFragmentInteractionListener, FragmentPerfiles.OnFragmentInteractionListener {
+        implements FragmentInformacionCuenta.OnFragmentInteractionListener, FragmentPerfiles.OnFragmentInteractionListener,
+                   FragmentVerPerfiles.OnFragmentInteractionListener {
 
-    FragmentInformacionCuenta fragmentInfo;
-    FragmentPerfiles fragmentPerfiles;
+    private FragmentInformacionCuenta fragmentInfo;
+    private FragmentPerfiles fragmentPerfiles;
+    private String correo;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.ventana_cuenta );
 
+        correo = getIntent().getExtras().getString( "correo" );
+
+        /*Bundle args = new Bundle();
+
+        args.putString( "correo_u", correo );
+
         fragmentInfo = new FragmentInformacionCuenta();
         fragmentPerfiles = new FragmentPerfiles();
 
-        getSupportFragmentManager().beginTransaction().add( R.id.contenedorFragment, fragmentInfo ).commit();
+        fragmentInfo.setArguments( args );
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.add(R.id.contenedorFragment, fragmentInfo);
+        ft.commit();*/
     }
 
     public boolean onCreateOptionsMenu( Menu menu ) {
@@ -42,11 +56,13 @@ public class VentanaCuenta extends AppCompatActivity
             return true;
         } else if ( id == R.id.item_crear ) {
             Intent creaPerfil = new Intent( VentanaCuenta.this, VentanaCrearPerfil.class );
+            creaPerfil.putExtra( "correo", correo );
             startActivity( creaPerfil );
             finish();
             return true;
         } else if ( id == R.id.item_buscar ) {
             Intent buscaPerfil = new Intent( VentanaCuenta.this, VentanaBuscarPerfil.class );
+            buscaPerfil.putExtra( "correo", correo );
             startActivity( buscaPerfil );
             finish();
             return true;
@@ -68,7 +84,23 @@ public class VentanaCuenta extends AppCompatActivity
     }
 
     public void onClick( View view ) {
+        switch ( view.getId() ) {
+            case R.id.btn_verInfo:
+                Intent ver_info = new Intent( VentanaCuenta.this, VentanaInformacionCuenta.class );
+                ver_info.putExtra( "correo", correo );
+                startActivity( ver_info );
+                break;
+            case R.id.btn_verPerfiles:
+                Intent ver_perfiles = new Intent( VentanaCuenta.this, VentanaPerfiles.class );
+                ver_perfiles.putExtra( "correo", correo );
+                startActivity( ver_perfiles );
+                break;
+        }
+        /*Bundle args = new Bundle();
+        args.putString( "correo", correo );
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        fragmentPerfiles.setArguments( args );
 
         switch ( view.getId() ) {
             case R.id.btn_verInfo:
@@ -78,7 +110,7 @@ public class VentanaCuenta extends AppCompatActivity
                 transaction.replace( R.id.contenedorFragment, fragmentPerfiles );
                 break;
         }
-        transaction.commit();
+        transaction.commit();*/
     }
 
     @Override

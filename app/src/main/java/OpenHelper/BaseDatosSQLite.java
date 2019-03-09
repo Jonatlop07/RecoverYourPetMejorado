@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.CursorAdapter;
 
 import com.example.jonatlop.recoveryourpet.utilidades.Utilidades;
 
@@ -53,7 +54,7 @@ public class BaseDatosSQLite extends SQLiteOpenHelper {
 
     public void insertarPerfil( String nomb_m, String esp_m, String gen_m,
                                 String raza_mascota, String tamanio_m, String ed_m,
-                                String c_esp, byte[] foto_m ) {
+                                String c_esp, byte[] foto_m, String duenio_m ) {
 
         ContentValues datos = new ContentValues();
         datos.put( Utilidades.CAMPO_NOMBRE_MASCOTA, nomb_m );
@@ -64,6 +65,8 @@ public class BaseDatosSQLite extends SQLiteOpenHelper {
         datos.put( Utilidades.CAMPO_EDAD_MASCOTA, ed_m );
         datos.put( Utilidades.CAMPO_FOTO_MASCOTA, foto_m );
         datos.put( Utilidades.CAMPO_CARACT_ESP_MASCOTA, c_esp );
+        datos.put( Utilidades.CAMPO_DUENIO_MASCOTA, duenio_m );
+
         this.getWritableDatabase().insert( Utilidades.TABLA_MASCOTA, null, datos );
     }
 
@@ -80,7 +83,21 @@ public class BaseDatosSQLite extends SQLiteOpenHelper {
         return mcursor;
     }
 
-    public Cursor ConsultarPerfilesUsuario ( String correo_usu ) throws SQLException {
+    public Cursor ConsultarInformacionCuenta ( String correo_usu ) throws SQLException {
+
+        Cursor mcursor = null;
+        final String CAMPOS_REQUERIDOS[] = { Utilidades.CAMPO_NOMBRES_USUARIO, Utilidades.CAMPO_APELLIDOS_USUARIO,
+                                           Utilidades.CAMPO_GENERO_USUARIO, Utilidades.CAMPO_TELEFONO_USUARIO,
+                                           Utilidades.CAMPO_CORREO_USUARIO };
+
+        final String CONSULTA_INFO = ""+Utilidades.CAMPO_CORREO_USUARIO+" like '"+correo_usu+"'";
+
+        mcursor = this.getReadableDatabase().query( Utilidades.TABLA_USUARIO, CAMPOS_REQUERIDOS,
+                CONSULTA_INFO, null, null, null, null );
+        return mcursor;
+    }
+
+    public Cursor ConsultarPerfileosUsuario ( String correo_usu ) throws SQLException {
 
         Cursor mcursor = null;
         final String VALIDACION_DATOS_USUARIO = "FROM "+Utilidades.TABLA_USUARIO+" WHERE " +
@@ -171,6 +188,17 @@ public class BaseDatosSQLite extends SQLiteOpenHelper {
             mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA,
                     BUSQUEDA_COMPLETA, null, null, null, null );
         }
+
+        return mcursor;
+    }
+
+    public Cursor ConsultarMisPerfilesCreados (String correo_usuario ) throws SQLException {
+        Cursor mcursor = null;
+
+        final String BUSQUEDA_MIS_PERFILES = ""+Utilidades.CAMPO_DUENIO_MASCOTA+" like '"+correo_usuario+"' ";
+
+        mcursor = this.getReadableDatabase().query( Utilidades.TABLA_MASCOTA, Utilidades.CAMPOS_MASCOTA,
+                BUSQUEDA_MIS_PERFILES, null, null, null, null );
 
         return mcursor;
     }

@@ -18,11 +18,14 @@ import com.example.jonatlop.recoveryourpet.R;
 public class VentanaBuscarPerfil extends AppCompatActivity {
 
     private Spinner especie_mascota, genero_mascota, raza_perro, raza_gato, tam_mascota, edad_mascota;
+    private String correo;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.ventana_buscar_perfil );
+
+        correo = getIntent().getExtras().getString( "correo" );
 
         especie_mascota = (Spinner) findViewById( R.id.especieMascota );
         genero_mascota = (Spinner) findViewById( R.id.generoMascota );
@@ -81,11 +84,13 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
 
         if ( id == R.id.item_micuenta ) {
             Intent verCuenta = new Intent( VentanaBuscarPerfil.this, VentanaCuenta.class );
+            verCuenta.putExtra( "correo", correo );
             startActivity( verCuenta );
             finish();
             return true;
         } else if ( id == R.id.item_crear ) {
             Intent creaPerfil = new Intent( VentanaBuscarPerfil.this, VentanaCrearPerfil.class );
+            creaPerfil.putExtra( "correo", correo );
             startActivity( creaPerfil );
             finish();
             return true;
@@ -122,6 +127,7 @@ public class VentanaBuscarPerfil extends AppCompatActivity {
 
         Intent realizar_busqueda = new Intent ( VentanaBuscarPerfil.this, VentanaListaPerfiles.class );
         realizar_busqueda.putExtra( "parametros_busqueda", parametros_busqueda );
+        realizar_busqueda.putExtra( "correo", correo );
         startActivity( realizar_busqueda );
         finish();
     }

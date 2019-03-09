@@ -27,6 +27,8 @@ public class VentanaListaPerfiles extends AppCompatActivity {
     private BaseDatosSQLite helper = new BaseDatosSQLite( this, "BD_Mascotas", null, 1 );
 
     private String[] conjunto_datos = new String[ 5 ];
+    private String correo;
+
     private ListView lv;
     private Adaptador adaptador;
     private PerfilMascota perfil_mascota;
@@ -35,6 +37,8 @@ public class VentanaListaPerfiles extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.ventana_lista_perfiles );
+
+        correo = getIntent().getExtras().getString( "correo" );
 
         lv = (ListView) findViewById( R.id.lista );
 
@@ -55,7 +59,8 @@ public class VentanaListaPerfiles extends AppCompatActivity {
                                                         cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_TAMANIO_MASCOTA ) ),
                                                         cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_EDAD_MASCOTA ) ),
                                                         cursor.getBlob( cursor.getColumnIndex( Utilidades.CAMPO_FOTO_MASCOTA ) ),
-                                                        cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_CARACT_ESP_MASCOTA)));
+                                                        cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_CARACT_ESP_MASCOTA )),
+                                                        cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_DUENIO_MASCOTA )));
                     lista_resultados.add( perfil_mascota );
                 } while( cursor.moveToNext() );
             }
@@ -87,16 +92,19 @@ public class VentanaListaPerfiles extends AppCompatActivity {
 
         if ( id == R.id.item_micuenta ) {
             Intent verCuenta = new Intent( VentanaListaPerfiles.this, VentanaCuenta.class );
+            verCuenta.putExtra( "correo", correo );
             startActivity( verCuenta );
             finish();
             return true;
         } else if (id == R.id.item_crear) {
             Intent creaPerfil = new Intent( VentanaListaPerfiles.this, VentanaCrearPerfil.class );
+            creaPerfil.putExtra( "correo", correo );
             startActivity( creaPerfil );
             finish();
             return true;
         } else if ( id == R.id.item_buscar ) {
             Intent buscaPerfil = new Intent( VentanaListaPerfiles.this, VentanaBuscarPerfil.class );
+            buscaPerfil.putExtra( "correo", correo );
             startActivity( buscaPerfil );
             finish();
             return true;
@@ -120,6 +128,7 @@ public class VentanaListaPerfiles extends AppCompatActivity {
             @Override
             public void onClick( DialogInterface dialog, int which ) {
                 Intent regresar_busqueda = new Intent( VentanaListaPerfiles.this, VentanaBuscarPerfil.class );
+                regresar_busqueda.putExtra( "correo", correo );
                 startActivity( regresar_busqueda );
                 finish();
             }

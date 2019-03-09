@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Ventanas.VentanaVerPerfil"></activity>
+        <activity android:name=".Ventanas.VentanaSeleccionPerfil"></activity>
+        <activity android:name=".Ventanas.VentanaPerfiles" />
+        <activity android:name=".Ventanas.VentanaInformacionCuenta" />
+        <activity android:name=".Ventanas.VentanaVerPerfil" />
         <activity android:name=".Ventanas.VentanaListaPerfiles" />
         <activity android:name=".Ventanas.VentanaBuscarPerfil" />
         <activity android:name=".Ventanas.VentanaCrearPerfil" />

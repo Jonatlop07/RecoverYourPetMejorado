@@ -33,7 +33,7 @@ import OpenHelper.BaseDatosSQLite;
 public class VentanaCrearPerfil extends AppCompatActivity {
     public static int SELECT_PICTURE = 1;
 
-    private String name = "";
+    private String name = "", correo;
 
     private BaseDatosSQLite helper = new BaseDatosSQLite( this, "BD_Mascotas", null, 1 );
 
@@ -45,6 +45,8 @@ public class VentanaCrearPerfil extends AppCompatActivity {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.ventana_crear_perfil );
+
+        correo = getIntent().getExtras().getString( "correo" );
 
         name = Environment.getExternalStorageDirectory() + "/test.jpg";
 
@@ -118,6 +120,7 @@ public class VentanaCrearPerfil extends AppCompatActivity {
 
         if ( id == R.id.item_micuenta ) {
             Intent verCuenta = new Intent( VentanaCrearPerfil.this, VentanaCuenta.class );
+            verCuenta.putExtra( "correo", correo );
             startActivity( verCuenta );
             finish();
             return true;
@@ -127,6 +130,7 @@ public class VentanaCrearPerfil extends AppCompatActivity {
             return true;
         } else if ( id == R.id.item_buscar ) {
             Intent buscaPerfil = new Intent( VentanaCrearPerfil.this, VentanaBuscarPerfil.class );
+            buscaPerfil.putExtra( "correo", correo );
             startActivity( buscaPerfil );
             finish();
             return true;
@@ -192,7 +196,7 @@ public class VentanaCrearPerfil extends AppCompatActivity {
             nombre_mascota.setText( "" );
             caract_esp.setText( "" );
             helper.abrir();
-            helper.insertarPerfil( nombre_m, especie_m, genero_m, raza_m, tam_m, edad_m, caract_esp_m, foto_byte );
+            helper.insertarPerfil( nombre_m, especie_m, genero_m, raza_m, tam_m, edad_m, caract_esp_m, foto_byte, correo );
             helper.cerrar();
 
             Toast.makeText( getApplicationContext(), "Perfil completado y guardado con éxito.", Toast.LENGTH_LONG ).show();

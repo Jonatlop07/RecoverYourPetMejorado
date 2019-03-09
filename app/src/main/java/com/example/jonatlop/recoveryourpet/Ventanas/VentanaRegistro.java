@@ -77,6 +77,7 @@ public class VentanaRegistro extends AppCompatActivity {
             Toast.makeText( getApplicationContext(), "Registro completado con éxito.", Toast.LENGTH_LONG).show();
 
             Intent boton_registrarse = new Intent( VentanaRegistro.this, VentanaCuenta.class );
+            boton_registrarse.putExtra( "correo", correo_u );
             startActivity( boton_registrarse );
             finish();
         }

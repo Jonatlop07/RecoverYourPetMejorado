@@ -3,18 +3,22 @@ package com.example.jonatlop.recoveryourpet.Ventanas;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import com.example.jonatlop.recoveryourpet.Entidades.PerfilMascota;
 import com.example.jonatlop.recoveryourpet.R;
+import com.example.jonatlop.recoveryourpet.utilidades.Adaptador;
+import com.example.jonatlop.recoveryourpet.utilidades.Utilidades;
+
+import java.util.ArrayList;
 
 import OpenHelper.BaseDatosSQLite;
 
@@ -59,42 +63,68 @@ public class FragmentPerfiles extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
-    private EditText correo;
-    BaseDatosSQLite bd_usuario = new BaseDatosSQLite( getContext(), "BD_Usuarios", null, 1 );
+    private BaseDatosSQLite helper = new BaseDatosSQLite( getContext(), "BD_Mascotas", null, 1 );
+    private FragmentVerPerfiles fragmentVerPerfiles;
+    private String correo;
+    private ListView lv_perfiles;
+    private Adaptador adaptador;
+    private PerfilMascota perfil_mascota;
+    private View view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
 
     }
 
     @Override
     public View onCreateView( LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState ) {
-        View view = inflater.inflate( R.layout.fragment_fragment_perfiles, container, false );
+        view = inflater.inflate( R.layout.fragment_perfiles, container, false );
 
-        correo = (EditText) view.findViewById(R.id.espacio_correo);
-        Button btn_validacion = (Button) view.findViewById( R.id.btn_validacion);
-        btn_validacion.setOnClickListener( new View.OnClickListener() {
+        fragmentVerPerfiles = new FragmentVerPerfiles();
 
-            @RequiresApi( api = Build.VERSION_CODES.KITKAT )
+        correo = getArguments().getString("correo");
+
+        lv_perfiles = (ListView) view.findViewById( R.id.lista_mis_perfiles );
+
+        /*Cursor cursor = helper.ConsultarMisPerfilesCreados( correo );
+
+        final ArrayList<PerfilMascota> lista_perfiles = new ArrayList<>();
+
+        if ( cursor.getCount() > 0 ) {
+            if ( cursor.moveToFirst() ) {
+                do {
+                    perfil_mascota = new PerfilMascota( cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_NOMBRE_MASCOTA ) ),
+                            cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_ESPECIE_MASCOTA ) ),
+                            cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_GENERO_MASCOTA ) ),
+                            cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_RAZA_MASCOTA ) ),
+                            cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_TAMANIO_MASCOTA ) ),
+                            cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_EDAD_MASCOTA ) ),
+                            cursor.getBlob( cursor.getColumnIndex( Utilidades.CAMPO_FOTO_MASCOTA ) ),
+                            cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_CARACT_ESP_MASCOTA )),
+                            cursor.getString( cursor.getColumnIndex( Utilidades.CAMPO_DUENIO_MASCOTA )));
+                    lista_perfiles.add( perfil_mascota );
+                } while( cursor.moveToNext() );
+            }
+        } else {
+            Toast.makeText( getActivity(), "No has creado un perfil de mascota hasta el momento",
+                    Toast.LENGTH_LONG ).show();
+        }
+
+        lv_perfiles.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View v) {
-                String correo_u = correo.getText().toString();
-                try ( Cursor cursor = bd_usuario.ConsultarPerfilesUsuario( correo_u ) ) {
-                    if ( cursor.getCount() > 0 ) {
+            public void onItemClick( AdapterView<?> parent, View view, int position, long id ) {
+                Bundle args = new Bundle();
+                args.putSerializable( "objetoPerfil", lista_perfiles.get( position ) );
 
-                    } else {
-                        Toast.makeText( getContext(), "Correo incorrecto",
-                                Toast.LENGTH_SHORT ).show();
-                    }
-                }
-            }});
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+
+                fragmentVerPerfiles.setArguments( args );
+                transaction.replace( R.id.contenedorFragment, fragmentVerPerfiles );
+            }
+        });*/
+
         return view;
     }
 

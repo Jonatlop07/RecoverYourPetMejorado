@@ -11,9 +11,10 @@ public class PerfilMascota implements Serializable {
     private String edad;
     private String caract_esp;
     private byte[] foto_masc;
+    private String correo_propietario;
 
     public PerfilMascota( String nombre, String especie, String genero, String raza,
-                         String tamanio, String edad, byte[] foto_masc, String caract_esp ) {
+                         String tamanio, String edad, byte[] foto_masc, String caract_esp, String correo_propietario ) {
         this.nombre = nombre;
         this.especie = especie;
         this.genero = genero;
@@ -22,6 +23,7 @@ public class PerfilMascota implements Serializable {
         this.edad = edad;
         this.foto_masc = foto_masc;
         this.caract_esp = caract_esp;
+        this.correo_propietario = correo_propietario;
     }
 
     public String getNombre() {
@@ -54,5 +56,9 @@ public class PerfilMascota implements Serializable {
 
     public byte[] getFoto() {
         return foto_masc;
+    }
+
+    public String getCorreo_propietario() {
+        return correo_propietario;
     }
 }

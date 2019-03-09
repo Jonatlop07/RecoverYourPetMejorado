@@ -27,12 +27,11 @@ public class Utilidades {
     public static final String CAMPO_EDAD_MASCOTA = "edad";
     public static final String CAMPO_FOTO_MASCOTA = "foto";
     public static final String CAMPO_CARACT_ESP_MASCOTA = "caractEspeciales";
-    //public static final String CAMPO_DUENIO_MASCOTA = "caractEspeciales";
+    public static final String CAMPO_DUENIO_MASCOTA = "dueño";
 
-    public static final String[] CAMPOS_MASCOTA = { Utilidades.CAMPO_NOMBRE_MASCOTA, Utilidades.CAMPO_ESPECIE_MASCOTA,
-                                                    Utilidades.CAMPO_GENERO_MASCOTA, Utilidades.CAMPO_RAZA_MASCOTA,
-                                                    Utilidades.CAMPO_TAMANIO_MASCOTA, Utilidades.CAMPO_EDAD_MASCOTA,
-                                                    Utilidades.CAMPO_FOTO_MASCOTA, Utilidades.CAMPO_CARACT_ESP_MASCOTA };
+    public static final String[] CAMPOS_MASCOTA = { CAMPO_NOMBRE_MASCOTA, CAMPO_ESPECIE_MASCOTA, CAMPO_GENERO_MASCOTA,
+                                                    CAMPO_RAZA_MASCOTA, CAMPO_TAMANIO_MASCOTA, CAMPO_EDAD_MASCOTA,
+                                                    CAMPO_FOTO_MASCOTA, CAMPO_CARACT_ESP_MASCOTA, CAMPO_DUENIO_MASCOTA };
 
     public static final String CREAR_TABLA_USUARIO = "CREATE TABLE "+TABLA_USUARIO+" ( "+CAMPO_ID_USUARIO+" INTEGER " +
                                                      "PRIMARY KEY AUTOINCREMENT, "+CAMPO_NOMBRES_USUARIO+" TEXT, " +
@@ -48,7 +47,7 @@ public class Utilidades {
                                                      ""+CAMPO_ESPECIE_MASCOTA+" TEXT, "+CAMPO_GENERO_MASCOTA+" " +
                                                      "TEXT,"+CAMPO_RAZA_MASCOTA+" TEXT, "+CAMPO_TAMANIO_MASCOTA+" " +
                                                      "TEXT, "+CAMPO_EDAD_MASCOTA+" TEXT, "+CAMPO_FOTO_MASCOTA+" " +
-                                                     "BLOB, "+CAMPO_CARACT_ESP_MASCOTA+" TEXT)";
+                                                     "BLOB, "+CAMPO_CARACT_ESP_MASCOTA+" TEXT, "+CAMPO_DUENIO_MASCOTA+" TEXT)";
 
     /*, "+CAMPO_DUENIO_MASCOTA+" " +
                                                      "TEXT, FOREIGN KEY("+CAMPO_DUENIO_MASCOTA+") REFERENCES " +
