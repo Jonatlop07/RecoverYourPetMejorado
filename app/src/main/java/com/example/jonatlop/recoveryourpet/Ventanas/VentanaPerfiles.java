@@ -65,9 +65,11 @@ public class VentanaPerfiles extends AppCompatActivity {
         lv_perfiles.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick( AdapterView<?> parent, View view, int position, long id ) {
-                Intent ver_seleccion = new Intent( VentanaPerfiles.this, VentanaVerPerfil.class );
+                Intent ver_seleccion = new Intent( VentanaPerfiles.this, VentanaSeleccionPerfil.class );
+                ver_seleccion.putExtra( "correo", correo );
                 ver_seleccion.putExtra( "objetoPerfil", lista_perfiles.get(position) );
                 startActivity( ver_seleccion );
+                finish();
             }
         });
     }

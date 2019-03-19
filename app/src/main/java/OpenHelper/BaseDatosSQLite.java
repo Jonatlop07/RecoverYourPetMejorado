@@ -97,7 +97,7 @@ public class BaseDatosSQLite extends SQLiteOpenHelper {
         return mcursor;
     }
 
-    public Cursor ConsultarPerfileosUsuario ( String correo_usu ) throws SQLException {
+    public Cursor ConsultarPerfilesUsuario ( String correo_usu ) throws SQLException {
 
         Cursor mcursor = null;
         final String VALIDACION_DATOS_USUARIO = "FROM "+Utilidades.TABLA_USUARIO+" WHERE " +
@@ -202,4 +202,5 @@ public class BaseDatosSQLite extends SQLiteOpenHelper {
 
         return mcursor;
     }
+
 }
